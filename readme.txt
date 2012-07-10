@@ -80,6 +80,7 @@ Not really, server based back-ups are only unsafe if your server is prone to fai
 
 = I want to make my backup more secure =
 That's easy, the plugin creates a .htaccess file in the backup folder. You can open this file and add to this code. The backup folder is protected against browsing or direct file access. 
+<<<<<<< HEAD
 
 = Will you add a link to download the file from the web? =
 No, as this would mean any anonymous user with the link could download your backup file. This would make things very insecure for you.
@@ -99,6 +100,17 @@ About 2 years I've been using this and yes, a few times I've used a backups to b
 
 = Does this work for multisite? =
 Yes, it will create a backup of all blogs and sub-sites. In the future I hope to make it work for just selected blogs.
+=======
+
+= The plugin takes a backup whenever I setup a specific cron job =
+If the time of the cron is before the current time the wp cron system is adding the cron job to run at the next page view, despite how long ago it is set. 
+
+= Why don't any compression formats appear? =
+Because Gzip and Bzip2 are not installed on your server.
+
+= Does this work for multisite? =
+Yes if you are site admin then each site can run its own version of the plugin and backups of the SQL database can be created.
+>>>>>>> proof checked the readme and added to the FAQs
 
 
 
