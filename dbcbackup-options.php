@@ -1,13 +1,4 @@
 <?php
-/*
-Plugin Options for DBC Backup 2
-Plugin URI: http://wordpress.damien.co/plugins?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin
-Version: 2.1
-Author: Damien Saunders
-Author URI: http://damien.co/?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin
-License: GPLv2 or later
-*/
-if ( ! defined( 'ABSPATH' ) ) exit;
 
 if(!defined('WP_ADMIN') OR !current_user_can('manage_options')) wp_die(__('You do not have sufficient permissions to access this page.'));
 
@@ -89,7 +80,7 @@ if(!empty($cfg['export_dir']))
 			{
 				if($file = @fopen($cfg['export_dir'].'/'.$condom, 'w')) 
 				{	
-					$cofipr =  ($condom == 'index.html')? '' : "order deny,allow\ndeny from all\nallow from 127.0.0.1";
+					$cofipr =  ($condom == 'index.html')? '' : "Order allow,deny\ndeny from all";
 					fwrite($file, $cofipr);
 					fclose($file);
 					$dbc_msg[] =  sprintf(__("File <strong>%s</strong> was created.", 'dbcbackup'), $condom);
@@ -109,64 +100,10 @@ if(!empty($cfg['export_dir']))
 else
 {
 	$dbc_msg[] = __('Specify the folder where the backups will be stored', 'dbcbackup');
-}
-
-/**
- *
- * DBC Backup
- * Options Panel
- **/
- ?>
-		<div class="wrap">
-			<div id="icon-options-general" class="icon32"></div>
-			<h2><?php _e('DBC Backup Options', 'dbcbackup'); ?></h2>
-			<div class="metabox-holder has-right-sidebar">
-	<div id="message" class="updated fade"><p><?php echo implode('<br />', $dbc_msg); ?></p></div>
-	<!-- SIDEBAR -->				
-			<div class="inner-sidebar">
-			
-						<div class="postbox">
-							<h3><span>Thanks from Damien</span></h3>
-							<div class="inside">
-					<p>Thanks for installing this. <a target="_blank" href="http://damien.co/?utm_source=WordPress&utm_medium=dbc-backup-installed&utm_campaign=WordPress-Plugin">Damien</a></p> 
-					<p>Please add yourself to <a target="_blank" href="http://wordpress.damien.co/wordpress-mailing-list/?utm_source=WordPress&utm_medium=dbc-backup-installed&utm_campaign=WordPress-Plugin">my mailing list</a> to be the first to hear WordPress tips and updates for this plugin.</p>
-					<p>Let me and your friends know you installed this:</p>
-				<a href="https://twitter.com/share" class="twitter-share-button" data-text="I just installed DBC Backup 2 for WordPress" data-url="http://damiens.ws/MLLV3H" data-counturl="http://wordpress.damien.co/dbc-backup-2" data-count="horizontal" data-via="damiensaunders">Tweet</a><script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>	
-			
-							</div>
-						</div>
-			
-						<div class="postbox">
-							<h3><span>Help & Support</span></h3>
-							<div class="inside">
-								<ul>
-								<li><a target="_blank" href="http://wordpress.damien.co/dbc-backup-2/?utm_source=WordPress&utm_medium=dbc-backup-installed&utm_campaign=WordPress-Plugin">Help & FAQ's</a></li>
-								<li><a target="_blank" href="http://wordpress.damien.co/?utm_source=WordPress&utm_medium=dbc-backup-installed&utm_campaign=WordPress-Plugin">More WordPress Tips & Ideas</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="postbox">
-							<h3><span>Services & Plugins from Damien</span></h3>
-							<div class="inside">
-							<ul>
-								<li><a target="_blank" href="http://wordpress.damien.co/isotope/?utm_source=WordPress&utm_medium=dbc-sitewide-installed&utm_campaign=WordPress-Plugin">Isotope</a> - does amazing visual things for your website.</li>
-							<li><a target="_blank" href="http://whitetshirtdigital.com/shop/?utm_source=WordPress&utm_medium=dbc-backup-installed&utm_campaign=WordPress-Plugin">Learn more about digital marketing or WordPress</a> with Damien.</li>
-							</ul>
-							</div>
-						</div>			
-			
-					</div> <!-- .inner-sidebar -->
-		
-		<!-- BODY COLUMN -->	
-					<div id="post-body">
-						<div id="post-body-content">
-	<!-- 
-		SETTINGS 
-	    -->	
-			<div class="postbox">
-				<h3><span>Backup Schedule & Backup Now</span></h3>
-				<div class="inside">
-					<ul class="subsubsub">
+}?>  
+<div class="wrap"> 
+	<h2><?php _e('DBC Backup Options', 'dbcbackup'); ?></h2>
+	<ul class="subsubsub">
 		<li><form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>"> 
 			<?php wp_nonce_field('dbc_quickdo'); ?>
 			<select name="quickdo" style="display:inline;">
@@ -181,7 +118,7 @@ else
 	<table class="form-table">
 	   <tr valign="top">
 		   <th scope="row" nowrap="nowrap"><?php _e('Export Directory:', 'dbcbackup'); ?></th>
-		   <td><input size="40" type="text"  name="export_dir" value="<?php echo attribute_escape($cfg['export_dir']); ?>" /><br />
+		   <td><input size="60" type="text"  name="export_dir" value="<?php echo attribute_escape($cfg['export_dir']); ?>" /><br />
 			<?php _e('Full Path e.g. /home/path/to/public_html/databack', 'dbcbackup'); ?></td>
 		</tr>
 		<tr valign="top">
@@ -211,7 +148,7 @@ else
 			</td>
 		</tr>
 		<tr valign="top">
-			<th scope="row" nowrap="nowrap"><?php _e('Backup Schedule:', 'dbcbackup'); ?><br /><?php _e('Server Dates/Times', 'dbcbackup'); ?></th>
+			<th scope="row" nowrap="nowrap"><?php _e('Scheduled Backup:', 'dbcbackup'); ?><br /><?php _e('Server Dates/Times', 'dbcbackup'); ?></th>
 			<td><?php 
 				list($hours, $minutes, $seconds) = explode('-', date('G-i-s', $cfg['schedule'])); 
 				$times = array('hours', 'minutes', 'seconds');
@@ -238,7 +175,7 @@ else
 				$selected = ($period == $speriod) ? 'selected' : ''; ?>
 				<option value="<?php echo $period; ?>" <?php echo $selected; ?>><?php echo $display; ?></option>
 				<?php endforeach; ?>
-				</select> at this time</p><?php
+				</select><?php
 				
 				foreach($times AS $time):
 					$max = $time == 'hours' ? 24 : 60; ?><label>
@@ -250,9 +187,9 @@ else
 					<?php for ($i = 0; $i<$max; $i++): $selected = ($$time == $i) ? 'selected' : ''; ?>
 					<option value="<?php echo $i; ?>" <?php echo $selected; ?>><?php echo $i; ?></option>
 					<?php endfor; ?>
-					</select></label>&nbsp;
-					<?php endforeach;?></p>
-				<?php _e('Active:', 'dbcbackup'); ?> <input style="display:inline" type="checkbox" name="active" value="1" <?php echo ($cfg['active'] ? 'checked="checked"' : ''); ?> /></p>		
+					</select></label>&nbsp;<?
+				endforeach;
+				_e('Active:', 'dbcbackup'); ?> <input style="display:inline" type="checkbox" name="active" value="1" <?php echo ($cfg['active'] ? 'checked="checked"' : ''); ?> /><br />		
 				<?php if($next_scheduled = wp_next_scheduled('dbc_backup')):
 						_e('Next Schedule is on: ', 'dbcbackup');  echo date('Y-m-d H:i:s', $next_scheduled); ?> | <?php
 					endif;
@@ -278,60 +215,46 @@ else
 		 <tr>
 			<td colspan="2" align="center">
 				<input type="hidden" name="do" value="dbc_setup" />
-				<input type="submit" name="submit" class="button-primary" value="<?php _e('Save Changes', 'dbcbackup'); ?>" /> 
+				<input type="submit" name="submit" class="button" value="<?php _e('Save Changes', 'dbcbackup'); ?>" /> 
 			</td>
 		</tr> 
 	</table>
 	</form>
-				</div> <!-- .inside -->
-			</div>
-		<!-- DBC BACKUP LOG -->					
-			<div class="postbox">
-				<h3><span>Backup Log</span></h3>
-				<div class="inside">
-					<?php 
-		/* 
-		 * here we insert the log files if there are any 
-		 */
-					if(!empty($cfg['logs'])): ?>
-					<table class="widefat">
-					<thead>
-					  <tr>
-						<th scope="col">#</th>
-						<th scope="col"><?php _e('Date', 'dbcbackup'); ?></th>
-						<th scope="col"><?php _e('Status', 'dbcbackup'); ?></th>
-						<th scope="col"><?php _e('Finished In', 'dbcbackup'); ?></th>
-						<th scope="col"><?php _e('File', 'dbcbackup'); ?></th>
-						<th scope="col"><?php _e('Filesize', 'dbcbackup'); ?></th>
-						<th scope="col"><?php _e('Removed', 'dbcbackup'); ?></th>
-					  </tr>
-					</thead>
-					<tbody>
-					<?php 
-					$i = 0;
-					foreach($cfg['logs'] AS $log): 
-						$download_icon = '<img src="' .plugins_url( 'images/glyphicons_200_download.png' , __FILE__ ). '" > ';
-						$dbc_file_name = attribute_escape($cfg['export_dir']).'/'.basename($log['file']);
-						?>
-					  <tr>
-						<td><?php echo ++$i; ?></td>
-						<td><?php echo date('Y-m-d H:i:s', $log['started']); ?></td>
-						<td><?php echo $log['status']; ?></td>
-						<td><?php echo round($log['took'], 3); ?> <?php _e('seconds', 'dbcbackup'); ?></td>
-						<td><?php echo basename($log['file']); ?><a href="<?php echo $dbc_file_name; ?>"><?php echo $download_icon; ?></a></td>
-						<td><?php echo size_format($log['size'], 2); ?></td>
-						<td><?php echo sprintf(__("%s old backups", 'dbcbackup'), intval($log['removed'])); ?></td>
-					  </tr>
-					  <?php endforeach; ?>
-					</tbody>
-					</table>
-					<?php endif;?>
-				</div> <!-- .inside -->
-			</div>
-			<!-- end of BACKUP LOG -->
-						</div> <!-- #post-body-content -->
-					</div> <!-- #post-body -->
-			
-				</div> <!-- .metabox-holder -->
-				
-			</div> <!-- .wrap -->
+</div>
+<br />
+<div id="message" class="updated fade"><p><?php echo implode('<br />', $dbc_msg); ?></p></div>
+<?php if(!empty($cfg['logs'])): ?>
+<div class="wrap">
+<h2><?php _e('DBC Backup Logs', 'dbcbackup'); ?></h2><br />
+<table class="widefat">
+<thead>
+  <tr>
+	<th scope="col">#</th>
+	<th scope="col"><?php _e('Date', 'dbcbackup'); ?></th>
+	<th scope="col"><?php _e('Status', 'dbcbackup'); ?></th>
+	<th scope="col"><?php _e('Finished In', 'dbcbackup'); ?></th>
+	<th scope="col"><?php _e('File', 'dbcbackup'); ?></th>
+	<th scope="col"><?php _e('Filesize', 'dbcbackup'); ?></th>
+	<th scope="col"><?php _e('Removed', 'dbcbackup'); ?></th>
+  </tr>
+</thead>
+<tbody>
+<?php 
+$i = 0;
+foreach($cfg['logs'] AS $log): ?>
+  <tr>
+	<td><?php echo ++$i; ?></td>
+	<td><?php echo date('Y-m-d H:i:s', $log['started']); ?></td>
+	<td><?php echo $log['status']; ?></td>
+	<td><?php echo round($log['took'], 3); ?> <?php _e('seconds', 'dbcbackup'); ?></td>
+	<td><?php echo basename($log['file']); ?></td>
+	<td><?php echo size_format($log['size'], 2); ?></td>
+	<td><?php echo sprintf(__("%s old backups", 'dbcbackup'), intval($log['removed'])); ?></td>
+  </tr>
+  <?php endforeach; ?>
+</tbody>
+</table>
+</div>
+<?php endif;
+
+?>

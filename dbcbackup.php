@@ -1,49 +1,27 @@
 <?php
 /*
-Plugin Name: DBC Backup 2
-Plugin URI: http://wordpress.damien.co/plugins?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin
-Description: Safe & easy backup for your WordPress database. Just schedule and forget.
-Version: 2.1.1
-Author: Damien Saunders
-Author URI: http://damien.co/?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin
+Plugin Name: DBC Backup
+Plugin URI: http://wordpress.damien.co
+Description: Database Cron Backup
+Version: 2.0
+Author: damiensaunders-1
+Author URI: http://damien.co
 License: GPLv2 or later
 */
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
-// Only create an instance of the plugin if it doesn't already exists in GLOBALS  
-if( ! array_key_exists( 'dbc-backup-2', $GLOBALS ) ) { 
-    class Dbcbackup { 
-        function __construct() { 
-        } // end constructor 
-    } // end class 
-    // Store a reference to the plugin in GLOBALS so that our unit tests can access it 
-    $GLOBALS['dbc-backup-2'] = new Dbcbackup();  
-} // end if  
-
-
-
-
-
-/*
- * Save User Options to WPDB
- */	
 add_action('activate_dbcbackup/dbcbackup.php', 'dbcbackup_install');
 function dbcbackup_install() 
 {
 	$options = array('export_dir' => '', 'compression' => 'none', 'gzip_lvl' => 0, 'period' => 86400,  'schedule' => time(), 'active' => 0, 'rotate' => -1);
 	add_option('dbcbackup_options', $options, '', 'no');
 }
-
-/*
- * Uninstall function
- */	
+	
+add_action('deactivate_dbcbackup/dbcbackup.php', 'dbcbackup_uninstall');	
 function dbcbackup_uninstall()
 {
 	wp_clear_scheduled_hook('dbc_backup');	
 	delete_option('dbcbackup_options');
 }
-register_deactivation_hook(__FILE__, 'dbcbackup_uninstall');
 
 add_action('dbc_backup', 'dbcbackup_run');
 function dbcbackup_run($mode = 'auto')
@@ -91,67 +69,26 @@ function dbcbackup_run($mode = 'auto')
 	update_option('dbcbackup_options', $cfg);
 	return ($mode == 'auto' ? true : $cfg['logs']);
 }
-/*
- * i18n -- I need to local at the POT stuff for v2.2
- */
+
 function dbcbackup_locale()
 {
-	load_plugin_textdomain('dbcbackup', 'wp-content/plugins/dbc-backup-2');
+	load_plugin_textdomain('dbcbackup', 'wp-content/plugins/dbcbackup');
 }
 
-/*
- * 2.1 Add Menu - moved to Tools
- */
 add_action('admin_menu', 'dbcbackup_menu');
 function dbcbackup_menu() 
 {
-	if(function_exists('add_management_page')) 
+	if(function_exists('add_menu_page')) 
 	{
-		add_management_page('DBC Backup', 'DBC Backup', 'manage_options', dirname(__FILE__).'/dbcbackup-options.php');
+		add_menu_page('DBC Backup', 'DB Cron Backup', 'manage_options', dirname(__FILE__).'/dbcbackup-options.php');
 	}
 }
 
-/*
- * Add WP-Cron Job
- */
 add_filter('cron_schedules', 'dbcbackup_interval');
 function dbcbackup_interval() {
 	$cfg = get_option('dbcbackup_options');
 	$cfg['period'] = ($cfg['period'] == 0) ? 86400 : $cfg['period'];
 	return array('dbc_backup' => array('interval' => $cfg['period'], 'display' => __('DBC Backup Interval', 'dbc_backup')));
-}
-
-/*
- * 2.1 Add settings link on Installed Plugin page
- */
-function dbc_backup_settings_link($links) { 
-  $settings_link = '<a href="tools.php?page=dbc-backup-2/dbcbackup-options.php">Settings</a>'; 
-  array_unshift($links, $settings_link); 
-  return $links; 
-}
- 
-$plugin = plugin_basename(__FILE__); 
-add_filter("plugin_action_links_$plugin", 'dbc_backup_settings_link' );
-
-
-/*
- * RSS feed
- */
-function dbc_backup_rss_display()
-{
-$dbc_feed = 'http://damien.co/feed';
-
-echo '<div class="rss-widget">';
-
-wp_widget_rss_output( array(
-	'url' => $dbc_feed,
-	'title' => 'RSS Feed',
-	'items' => 3,
-	'show summary' => 1,
-	'show_author' => 0,
-	'show date' => 0,
-	));
-echo '</div>';
 }
 
 ?>
