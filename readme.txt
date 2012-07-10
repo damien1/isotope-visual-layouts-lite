@@ -51,20 +51,23 @@ Version 1.0
 
 == Frequently Asked Questions ==
 
-= Why create a server based back-ups =
-It makes sense to me to keep the SQL database backup where you will most likely need it if something goes wrong. Many web hosts provide a large amount of free space to store files. So rather than having to pay someone else for storing your database backup you can use the free space you already have. 
+= Why create a server based back-up =
+It makes sense to me to keep the SQL database backup where you will most likely need it if something goes wrong. Many web hosts provide a large amount of free space for you to store files. So rather than having to pay someone else for storing your database backup you can use the free space you already have. 
 
 = Aren't server based back-ups insecure? =
 Not really, server based back-ups are only unsafe if your server is prone to fail or poorly protected from hacking.
 
 = I want to make my backup more secure =
-That's easy, the plugin creates a .htaccess file in the backup folder. You can open this file and add this 
+That's easy, the plugin creates a .htaccess file in the backup folder. You can open this file and add to this code. The backup folder is protected against browsing or direct file access. 
 
 = The plugin takes a backup whenever I setup a specific cron job =
-If the time of the cron is before the current time the wp cron system is adding the cron job to run at the next page view, despite of how long ago it is set. 
+If the time of the cron is before the current time the wp cron system is adding the cron job to run at the next page view, despite how long ago it is set. 
 
-= Why only the none compression format appears =
+= Why don't any compression formats appear? =
 Because Gzip and Bzip2 are not installed on your server.
+
+= Does this work for multisite? =
+Yes if you are site admin then each site can run its own version of the plugin and backups of the SQL database can be created.
 
 
 
