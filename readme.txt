@@ -1,16 +1,16 @@
 === Plugin Name ===
-Contributors: damiensaunders-1
+Contributors: damiensaunders
 Donate link: 
 Tags: Database, Cron, Backup, Schedule, Logs, SQL
 Requires at least: 3.0
 Tested up to: 3.4.1
 Stable tag: 2.0
 
-DBC Backup is a simple way to schedule daily database backups using the wp-cron system.
+DBC Backup 2 is a simple way to schedule daily database backups using the wp-cron system.
 
 == Description ==
 
-DBC Backup is a simple way to schedule daily database backups using the wp cron system. 
+DBC Backup 2 is a simple way to schedule daily database backups using the wp cron system. 
 
 I've used this plugin for several years and was disappointed that the author Chris T aka Tefra no longer maintained it so I have forked it. I tried to contact the author but without any luck.
 

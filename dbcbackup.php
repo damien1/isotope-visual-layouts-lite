@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: DBC Backup
-Plugin URI: http://wordpress.damien.co
+Plugin Name: DBC Backup 2
+Plugin URI: http://wordpress.damien.co/plugins/
 Description: Database Cron Backup
 Version: 2.0
-Author: damiensaunders-1
+Author: damiensaunders
 Author URI: http://damien.co
 License: GPLv2 or later
 */
