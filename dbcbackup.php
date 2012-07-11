@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: DBC Backup 2
-Plugin URI: http://wordpress.damien.co/plugins/
-Description: Database Cron Backup
+Plugin URI: http://wordpress.damien.co/plugins?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin
+Description: A plugin to backup your database. Just schedule and forget.
 Version: 2.0
 Author: damiensaunders
-Author URI: http://damien.co
+Author URI: http://damien.co/?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin
 License: GPLv2 or later
 */
 

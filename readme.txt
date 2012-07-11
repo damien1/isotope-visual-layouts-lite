@@ -10,7 +10,7 @@ DBC Backup 2 is a simple way to schedule daily database backups using the wp-cro
 
 == Description ==
 
-DBC Backup 2 is a simple way to schedule daily database backups using the wp cron system. 
+DBC Backup 2 is a *simple way to schedule daily database backups* using the wp cron system. 
 
 You can select when and where your backup will be generated. If your server has support you can select between three different compression formats: none, Gzip and Bzip2. The plugin will try to auto create the export directory, the .htaccess and an empty index.html file to protect your backups.
 
@@ -23,6 +23,12 @@ Except the cron backup, you have also the ability to take backups immediately. T
 DBC Backup was built to be fast, flexible and as simple as possible.
 
 I've used this plugin for several years and was disappointed that the author Chris T aka Tefra no longer maintained it so I have forked it. I tried to contact the author but without any luck.
+
+= Checkout my other work =
+* [Damien](http://damien.co/blog?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin) - strategy, technical development and digital marketing
+* [Ideas for WordPress](http://wordpress.damien.co/?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin)
+* [Plugins for WordPress](http://wordpress.damien.co/plugins?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin)
+
 
 == Changelog ==
 
