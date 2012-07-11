@@ -6,7 +6,11 @@ Requires at least: 3.0
 Tested up to: 3.4.2
 Stable tag: 2.1.1
 
+<<<<<<< HEAD
 DBC Backup 2 is a safe & simple way to schedule regular WordPress database backups using the wp-cron batch jobs.
+=======
+DBC Backup 2 is a simple way to schedule daily database backups using the wp-cron batch jobs.
+>>>>>>> improved readme and added screenshot
 
 == Description ==
 
@@ -14,6 +18,7 @@ DBC Backup 2 can give you the confidence that your WordPress database is backed-
  
 You select when and where your backup will be generated. The backup file is saved to directory on your web server which for many people is free storage and more reliable then saving to your home computer.
 
+<<<<<<< HEAD
 = Key Features =
 * Secure - The file name includes some random characters which makes it impossible for someone to guess the backup name and download it.
 * Safe - the backup directory is protected with a .htaccess and an empty index.html file which means no-one can browse or download the file via the web
@@ -27,6 +32,13 @@ The plugin will try to auto create the export directory
 During backup, a log will be generated which includes, the generation date, file, filesize, status and the duration of the generation.
 
 The backup files are identical to what phpmyadmin would produce because DBC Backup is using the key procedures of phpmyadmin. 
+=======
+You can select when and where your backup will be generated. If your server has support you can select between three different compression formats: none, Gzip and Bzip2. The plugin will try to auto create the export directory, the .htaccess and an empty index.html file to protect your backups.
+
+The backup file is also protected by a small hash key which makes it impossible for someone to guess the backup name and download it.
+
+During backup, a log will be generated which includes, the generation date, file, filesize, status and the duration of the generation.
+>>>>>>> improved readme and added screenshot
 
 DBC Backup was built to be fast, flexible and as simple as possible.
 
@@ -37,6 +49,7 @@ I've used this plugin for several years and was disappointed that the author Chr
 * [Ideas for WordPress](http://wordpress.damien.co/?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin)
 * [Plugins for WordPress](http://wordpress.damien.co/plugins?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin)
 
+<<<<<<< HEAD
 
 == Changelog ==
 
@@ -49,6 +62,14 @@ I've used this plugin for several years and was disappointed that the author Chr
 - Cleaned up the scheduling buttons to make it easier to use
 - FIXED - uninstall wasn't deleting user options saved in the database.
 
+=======
+DBC Backup was built to be fast, flexible and as simple as possible.
+
+I've used this plugin for several years and was disappointed that the author Chris T aka Tefra no longer maintained it so I have forked it. I tried to contact the author but without any luck.
+
+== Changelog ==
+
+>>>>>>> improved readme and added screenshot
 = Version 2.0 =
 - Submitted as 'fork' of the existing plugin
 - Tested and confirmed working on WordPress 3.4.1
@@ -62,7 +83,11 @@ I've used this plugin for several years and was disappointed that the author Chr
 
 == Installation ==
 
+<<<<<<< HEAD
 1. Upload the folder dbc-backup-2 to the `/wp-content/plugins/` directory
+=======
+1. Upload the folder dbcbackup to the `/wp-content/plugins/` directory
+>>>>>>> improved readme and added screenshot
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. You can click on the Settings link from the Installed Plugins page or from the link 'DBC Backup' on the Tools Menu.
 4. Configure the plugin settings and you are ready. You'll need to know your server path to a folder you want the backup saved.
