@@ -1,11 +1,12 @@
 <?php
 /*
-Plugin Name: Damien's Isotope Script Plugin
-Description: All of the important stuff for Isotope is added.
-Version: 0.2
-License: GPL
-Author: Damien Saunders
-Author URI: http://wordpress.damiensaunders.com
+Plugin Name: DBC Isotope
+Plugin URI: http://wordpress.damien.co/isotope?utm_source=WordPress&utm_medium=isotope&utm_campaign=WordPress-Plugin
+Description: A plugin to add Isotope & Masonry to your website. Caution needs commercial licence
+Version: 2.0
+Author: damiensaunders
+Author URI: http://damien.co/?utm_source=WordPress&utm_medium=isotope&utm_campaign=WordPress-Plugin
+License: GPLv2 or later
 */
 
 
