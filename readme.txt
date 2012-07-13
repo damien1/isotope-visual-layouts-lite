@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: damiensaunders
 Donate link: 
-Tags: Database, Cron, Backup, Schedule, Logs, SQL
+Tags: Database, Cron, Backup, Schedule, Logs, SQL, WordPress Backup, Database backup,
 Requires at least: 3.0
 Tested up to: 3.4.1
 Stable tag: 2.0
