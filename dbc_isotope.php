@@ -34,7 +34,7 @@ function print_my_script() {
 
 // Add Hook for Menu under Appearance
 add_action('admin_menu', 'dbc_isotope');
-function dbc_excludesitewide() 
+function dbc_isotope() 
 {
 	if(function_exists('add_menu_page')) 
 	{
