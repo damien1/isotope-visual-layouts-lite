@@ -18,7 +18,7 @@
 		<br /><a target="_blank" href="http://damien.co/?utm_source=WordPress&utm_medium=dbc-sitewide-installed&utm_campaign=WordPress-Plugin">Damien</a></p> 
 		<p>Please add yourself to <a target="_blank" href="http://wordpress.damien.co/wordpress-mailing-list/?utm_source=WordPress&utm_medium=dbc-sitewide-installed&utm_campaign=WordPress-Plugin">my mailing list</a> to be the first to hear about updates for this plugin.</p>
 		<p>Let me and your friends know you installed this:</p>
-	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://wordpress.damien.co/plugins" data-counturl="http://wordpress.damien.co/plugins" data-count="horizontal" data-via="damiensaunders" >Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>	
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://wordpress.damien.co/plugins" data-counturl="http://wordpress.damien.co/plugins" data-count="horizontal" data-via="damiensaunders">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>	
 
 				</div>
 			</div>
