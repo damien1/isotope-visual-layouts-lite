@@ -18,6 +18,7 @@ function register_my_script() {
 	wp_register_script('isotope', plugins_url('/js/jquery.isotope.min.js', __FILE__), array('jquery'), '1.0', true);
 }
 
+//hooks to add custom stylesheet
 function add_my_stylesheet() {
         $myStyleUrl = plugins_url('style.css', __FILE__); 
         $myStyleFile = WP_PLUGIN_DIR . __FILE__ . '/css/style.css';
@@ -42,6 +43,23 @@ function dbc_isotope()
 	}
 }
 
+//RSS feed
+function dbc_isotope_rss_display()
+{
+$dbc_feed = 'http://damien.co/feed';
+
+echo '<div class="rss-widget">';
+
+wp_widget_rss_output( array(
+	'url' => $dbc_feed,
+	'title' => 'RSS Feed',
+	'items' => 3,
+	'show summary' => 1,
+	'show_author' => 0,
+	'show date' => 0,
+	));
+echo '</div>';
+}
 
 
 ?>

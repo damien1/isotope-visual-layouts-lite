@@ -24,15 +24,21 @@
 			</div>
 
 			<div class="postbox">
-				<h3><span>Related Content</span></h3>
+				<h3><span>Help & Support</span></h3>
 				<div class="inside">
 					<p>Hi, I'm metabox 2!</p>
 					<ul>
-					<li><a href="http://wordpress.damien.co/dbc-sitewide/?utm_source=WordPress&utm_medium=dbc-sitewide-installed&utm_campaign=WordPress-Plugin">Help & FAQ's</a></li>
-					<li><a href="http://wordpress.damien.co/?utm_source=WordPress&utm_medium=dbc-sitewide-installed&utm_campaign=WordPress-Plugin">More WordPress Tips & Ideas</a></li>
+					<li><a href="http://wordpress.damien.co/isotope/">Help & FAQ's</a></li>
+					<li><a href="http://wordpress.damien.co/">More WordPress Tips & Ideas</a></li>
+					</ul>
 				</div>
 			</div>
-
+			<div class="postbox">
+				<h3><span>Latest from Damien</span></h3>
+				<div class="inside">
+					<?php dbc_isotope_rss_display() ?>
+				</div>
+			</div>			
 			<!-- ... more boxes ... -->
 
 		</div> <!-- .inner-sidebar -->
