@@ -43,6 +43,39 @@ function dbc_isotope()
 	}
 }
 
+
+// Add shortcode function
+add_shortcode('dbc_isotope', 'dbc_isotope_shortcode_handler');
+ 
+function dbc_isotope_shortcode_handler($atts) {
+	global $add_my_script;
+ 
+	$add_my_script = true; ?>
+	<!-- #isotope for WordPress by Damien  -->
+	<div id="isocontent">
+	<?php 
+		$query = new WP_Query( 'posts_per_page=-1' );
+			while ($query->have_posts()) : $query->the_post(); ?>
+			<div class="box box<?php $category = get_the_category(); echo $category[0]->cat_ID; ?>">
+			<p><?php $category = get_the_category(); echo $category[0]->cat_name;?></p>
+			<a href="<?php the_permalink() ?>"><?php the_title(); ?></a> 
+			<p><?php echo $post->ID; ?></p>
+			</div><!-- .box -->
+			<?php endwhile; ?>
+			</div><!-- #isocontent -->
+			
+	<script type="text/javascript">
+	jQuery(document).ready(function() {
+    var mycontainer = jQuery('#isocontent');
+      mycontainer.isotope({
+      itemSelector: '.box'
+      });
+    });
+   </script>
+   		
+	<?php
+
+
 //RSS feed
 function dbc_isotope_rss_display()
 {
