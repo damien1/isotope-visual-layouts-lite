@@ -72,8 +72,8 @@ function dbc_isotope_shortcode_handler($atts) {
       });
     });
    </script>
-   		
-	<?php
+<?php   		
+}
 
 
 //RSS feed
@@ -93,6 +93,5 @@ wp_widget_rss_output( array(
 	));
 echo '</div>';
 }
-
 
 ?>
