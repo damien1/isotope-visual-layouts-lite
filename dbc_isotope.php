@@ -3,34 +3,33 @@
 Plugin Name: DBC Isotope
 Plugin URI: http://wordpress.damien.co/isotope?utm_source=WordPress&utm_medium=isotope&utm_campaign=WordPress-Plugin
 Description: A plugin to add Isotope & Masonry to your website. 
-Version: 0.1
+Version: 0.2
 Author: Damien Saunders
 Author URI: http://damien.co/?utm_source=WordPress&utm_medium=isotope&utm_campaign=WordPress-Plugin
-License: Caution needs commercial licence
+License: Portions GPLv3 - Isotope js Commercial Licence required
 */
 
-//hooks to add isotope jquery and custom stylesheet
-add_action('init', 'register_my_script');
-add_action('wp_footer', 'print_my_script');
-add_action( 'wp_print_styles', 'add_my_stylesheet' );
+/**
+ * Enqueue isotope.js
+ */
+function my_scripts_method() {
+	wp_enqueue_script('isotope', plugins_url('/js/jquery.isotope.js', __FILE__), array('jquery'));
+}    
  
-function register_my_script() {
-	wp_register_script('isotope', plugins_url('/js/jquery.isotope.min.js', __FILE__), array('jquery'), '1.0', true);
-}
+add_action('wp_enqueue_scripts', 'my_scripts_method');
 
-//hooks to add custom stylesheet
-function add_my_stylesheet() {
-        $myStyleUrl = plugins_url('style.css', __FILE__); 
-        $myStyleFile = WP_PLUGIN_DIR . __FILE__ . '/css/style.css';
-        if ( file_exists($myStyleFile) ) {
-            wp_register_style('myStyleSheets', $myStyleUrl);
-            wp_enqueue_style( 'myStyleSheets');
-        }
-    }
+/**
+ * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
+ */
+add_action( 'wp_enqueue_scripts', 'dbc_isotope_add_my_stylesheet' );
 
- 
-function print_my_script() {
-	wp_print_scripts('isotope');
+/**
+ * Enqueue plugin style-file
+ */
+function dbc_isotope_add_my_stylesheet() {
+    // Respects SSL, Style.css is relative to the current file
+    wp_register_style( 'dbc_isotope-style', plugins_url('css/custom_isotope.css', __FILE__) );
+    wp_enqueue_style( 'dbc_isotope-style' );
 }
 
 // Add Hook for Menu under Appearance
@@ -49,9 +48,9 @@ add_shortcode('dbc_isotope', 'dbc_isotope_shortcode_handler');
  
 function dbc_isotope_shortcode_handler($atts) {
 	global $add_my_script;
- 
+	
 	$add_my_script = true; ?>
-	<!-- #isotope for WordPress by Damien  -->
+	<!-- #isotope for WordPress by Damien http://damien.co/isotope  -->
 	<div id="isocontent">
 	<?php 
 		$query = new WP_Query( 'posts_per_page=-1' );
@@ -60,8 +59,8 @@ function dbc_isotope_shortcode_handler($atts) {
 			<p><?php $category = get_the_category(); echo $category[0]->cat_name;?></p>
 			<a href="<?php the_permalink() ?>"><?php the_title(); ?></a> 
 			<p><?php echo $post->ID; ?></p>
-			</div><!-- .box -->
-			<?php endwhile; ?>
+			</div>
+			<?php endwhile; ?> 
 			</div><!-- #isocontent -->
 			
 	<script type="text/javascript">
