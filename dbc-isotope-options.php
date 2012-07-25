@@ -34,11 +34,20 @@
 				</div>
 			</div>
 			<div class="postbox">
+				<h3><span>Plugin Suggestions</span></h3>
+				<div class="inside">
+				<p>Here's another plugin of mine that I think you'll need.</p>
+				<ul>
+					<li><a href="http://wordpress.damien.co/dbc-backup/">DBC Backup 2</a> - safe and easy backup for your WordPress database.</li>
+				</ul>
+				</div>
+			</div>			
+			<div class="postbox">
 				<h3><span>Latest from Damien</span></h3>
 				<div class="inside">
 					<?php dbc_isotope_rss_display() ?>
 				</div>
-			</div>			
+			</div>		
 			<!-- ... more boxes ... -->
 
 		</div> <!-- .inner-sidebar -->
