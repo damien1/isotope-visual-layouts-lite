@@ -165,11 +165,12 @@ else
 		<!-- BODY COLUMN -->	
 					<div id="post-body">
 						<div id="post-body-content">
-		<!-- SETTINGS -->	
+	<!-- 
+		SETTINGS 
+	    -->	
 			<div class="postbox">
 				<h3><span>SETTINGS</span></h3>
 				<div class="inside">
-					<p>Hi, I'm metabox 3!</p>
 					<ul class="subsubsub">
 		<li><form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>"> 
 			<?php wp_nonce_field('dbc_quickdo'); ?>
@@ -185,7 +186,7 @@ else
 	<table class="form-table">
 	   <tr valign="top">
 		   <th scope="row" nowrap="nowrap"><?php _e('Export Directory:', 'dbcbackup'); ?></th>
-		   <td><input size="60" type="text"  name="export_dir" value="<?php echo attribute_escape($cfg['export_dir']); ?>" /><br />
+		   <td><input size="40" type="text"  name="export_dir" value="<?php echo attribute_escape($cfg['export_dir']); ?>" /><br />
 			<?php _e('Full Path e.g. /home/path/to/public_html/databack', 'dbcbackup'); ?></td>
 		</tr>
 		<tr valign="top">
@@ -282,7 +283,7 @@ else
 		 <tr>
 			<td colspan="2" align="center">
 				<input type="hidden" name="do" value="dbc_setup" />
-				<input type="submit" name="submit" class="button" value="<?php _e('Save Changes', 'dbcbackup'); ?>" /> 
+				<input type="submit" name="submit" class="button-primary" value="<?php _e('Save Changes', 'dbcbackup'); ?>" /> 
 			</td>
 		</tr> 
 	</table>
@@ -290,14 +291,46 @@ else
 				</div> <!-- .inside -->
 			</div>
 		<!-- DBC BACKUP LOG -->					
-							<div class="postbox">
-								<h3><span>BACKUP LOG</span></h3>
-								<div class="inside">
-									<p>Hi, I'm metabox 4!</p>
-									
-								</div> <!-- .inside -->
-							</div>
-			
+			<div class="postbox">
+				<h3><span>BACKUP LOG</span></h3>
+				<div class="inside">
+					<?php 
+		/* 
+		 * here we insert the log files if there are any 
+		 */
+					if(!empty($cfg['logs'])): ?>
+					<table class="widefat">
+					<thead>
+					  <tr>
+						<th scope="col">#</th>
+						<th scope="col"><?php _e('Date', 'dbcbackup'); ?></th>
+						<th scope="col"><?php _e('Status', 'dbcbackup'); ?></th>
+						<th scope="col"><?php _e('Finished In', 'dbcbackup'); ?></th>
+						<th scope="col"><?php _e('File', 'dbcbackup'); ?></th>
+						<th scope="col"><?php _e('Filesize', 'dbcbackup'); ?></th>
+						<th scope="col"><?php _e('Removed', 'dbcbackup'); ?></th>
+					  </tr>
+					</thead>
+					<tbody>
+					<?php 
+					$i = 0;
+					foreach($cfg['logs'] AS $log): ?>
+					  <tr>
+						<td><?php echo ++$i; ?></td>
+						<td><?php echo date('Y-m-d H:i:s', $log['started']); ?></td>
+						<td><?php echo $log['status']; ?></td>
+						<td><?php echo round($log['took'], 3); ?> <?php _e('seconds', 'dbcbackup'); ?></td>
+						<td><?php echo basename($log['file']); ?></td>
+						<td><?php echo size_format($log['size'], 2); ?></td>
+						<td><?php echo sprintf(__("%s old backups", 'dbcbackup'), intval($log['removed'])); ?></td>
+					  </tr>
+					  <?php endforeach; ?>
+					</tbody>
+					</table>
+					<?php endif;?>
+				</div> <!-- .inside -->
+			</div>
+			<!-- end of BACKUP LOG -->
 						</div> <!-- #post-body-content -->
 					</div> <!-- #post-body -->
 			
