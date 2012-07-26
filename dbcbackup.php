@@ -3,7 +3,7 @@
 Plugin Name: DBC Backup 2
 Plugin URI: http://wordpress.damien.co/plugins?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin
 Description: A plugin to backup your database. Just schedule and forget.
-Version: 2.0
+Version: 2.1
 Author: damiensaunders
 Author URI: http://damien.co/?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin
 License: GPLv2 or later
@@ -16,12 +16,12 @@ function dbcbackup_install()
 	add_option('dbcbackup_options', $options, '', 'no');
 }
 	
-add_action('deactivate_dbcbackup/dbcbackup.php', 'dbcbackup_uninstall');	
 function dbcbackup_uninstall()
 {
 	wp_clear_scheduled_hook('dbc_backup');	
 	delete_option('dbcbackup_options');
 }
+register_deactivation_hook(__FILE__, 'dbcbackup_uninstall');
 
 add_action('dbc_backup', 'dbcbackup_run');
 function dbcbackup_run($mode = 'auto')
@@ -80,7 +80,7 @@ function dbcbackup_menu()
 {
 	if(function_exists('add_menu_page')) 
 	{
-		add_menu_page('DBC Backup', 'DB Cron Backup', 'manage_options', dirname(__FILE__).'/dbcbackup-options.php');
+		add_menu_page('DBC Backup', 'DBC Backup', 'manage_options', dirname(__FILE__).'/dbcbackup-options.php');
 	}
 }
 
@@ -89,6 +89,35 @@ function dbcbackup_interval() {
 	$cfg = get_option('dbcbackup_options');
 	$cfg['period'] = ($cfg['period'] == 0) ? 86400 : $cfg['period'];
 	return array('dbc_backup' => array('interval' => $cfg['period'], 'display' => __('DBC Backup Interval', 'dbc_backup')));
+}
+
+// 2.1 Add settings link on plugin page
+function dbc_backup_settings_link($links) { 
+  $settings_link = '<a href="admin.php?page=dbc-backup-2/dbcbackup-options.php">Settings</a>'; 
+  array_unshift($links, $settings_link); 
+  return $links; 
+}
+ 
+$plugin = plugin_basename(__FILE__); 
+add_filter("plugin_action_links_$plugin", 'dbc_backup_settings_link' );
+
+
+//RSS feed
+function dbc_backup_rss_display()
+{
+$dbc_feed = 'http://damien.co/feed';
+
+echo '<div class="rss-widget">';
+
+wp_widget_rss_output( array(
+	'url' => $dbc_feed,
+	'title' => 'RSS Feed',
+	'items' => 3,
+	'show summary' => 1,
+	'show_author' => 0,
+	'show date' => 0,
+	));
+echo '</div>';
 }
 
 ?>
