@@ -1,9 +1,12 @@
 <?php
-/**
- *
- *
- *
- **/
+/*
+Plugin Options for DBC Backup 2
+Plugin URI: http://wordpress.damien.co/plugins?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin
+Version: 2.1
+Author: Damien Saunders
+Author URI: http://damien.co/?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin
+License: GPLv2 or later
+*/
 
 if(!defined('WP_ADMIN') OR !current_user_can('manage_options')) wp_die(__('You do not have sufficient permissions to access this page.'));
 
@@ -117,18 +120,17 @@ else
 			<div id="icon-options-general" class="icon32"></div>
 			<h2><?php _e('DBC Backup Options', 'dbcbackup'); ?></h2>
 			<div class="metabox-holder has-right-sidebar">
-	
+	<div id="message" class="updated fade"><p><?php echo implode('<br />', $dbc_msg); ?></p></div>
 	<!-- SIDEBAR -->				
 			<div class="inner-sidebar">
 			
 						<div class="postbox">
 							<h3><span>Thanks from Damien</span></h3>
 							<div class="inside">
-					<p>Thanks for installing this. 
-					<br /><a target="_blank" href="http://damien.co/?utm_source=WordPress&utm_medium=dbc-sitewide-installed&utm_campaign=WordPress-Plugin">Damien</a></p> 
-					<p>Please add yourself to <a target="_blank" href="http://wordpress.damien.co/wordpress-mailing-list/?utm_source=WordPress&utm_medium=dbc-sitewide-installed&utm_campaign=WordPress-Plugin">my mailing list</a> to be the first to hear about updates for this plugin.</p>
+					<p>Thanks for installing this. <a target="_blank" href="http://damien.co/?utm_source=WordPress&utm_medium=dbc-backup-installed&utm_campaign=WordPress-Plugin">Damien</a></p> 
+					<p>Please add yourself to <a target="_blank" href="http://wordpress.damien.co/wordpress-mailing-list/?utm_source=WordPress&utm_medium=dbc-backup-installed&utm_campaign=WordPress-Plugin">my mailing list</a> to be the first to hear WordPress tips and updates for this plugin.</p>
 					<p>Let me and your friends know you installed this:</p>
-				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://wordpress.damien.co/plugins" data-counturl="http://wordpress.damien.co/plugins" data-count="horizontal" data-via="damiensaunders">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>	
+				<a href="https://twitter.com/share" class="twitter-share-button" data-text="I just installed DBC Backup 2 for WordPress" data-url="http://damiens.ws/MLLV3H" data-counturl="http://wordpress.damien.co/dbc-backup-2" data-count="horizontal" data-via="damiensaunders">Tweet</a><script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>	
 			
 							</div>
 						</div>
@@ -136,29 +138,21 @@ else
 						<div class="postbox">
 							<h3><span>Help & Support</span></h3>
 							<div class="inside">
-								<p>Hi, I'm metabox 2!</p>
 								<ul>
-								<li><a href="http://wordpress.damien.co/isotope/">Help & FAQ's</a></li>
-								<li><a href="http://wordpress.damien.co/">More WordPress Tips & Ideas</a></li>
+								<li><a target="_blank" href="http://wordpress.damien.co/dbc-backup-2/?utm_source=WordPress&utm_medium=dbc-backup-installed&utm_campaign=WordPress-Plugin">Help & FAQ's</a></li>
+								<li><a target="_blank" href="http://wordpress.damien.co/?utm_source=WordPress&utm_medium=dbc-backup-installed&utm_campaign=WordPress-Plugin">More WordPress Tips & Ideas</a></li>
 								</ul>
 							</div>
 						</div>
 						<div class="postbox">
-							<h3><span>Plugin Suggestions</span></h3>
+							<h3><span>Services & Plugins from Damien</span></h3>
 							<div class="inside">
-							<p>Here's another plugin of mine that I think you'll need.</p>
 							<ul>
-								<li><a href="http://wordpress.damien.co/dbc-backup/">DBC Backup 2</a> - safe and easy backup for your WordPress database.</li>
+								<li><a target="_blank" href="http://wordpress.damien.co/isotope/?utm_source=WordPress&utm_medium=dbc-sitewide-installed&utm_campaign=WordPress-Plugin">Isotope</a> - does amazing visual things for your website.</li>
+							<li><a target="_blank" href="http://whitetshirtdigital.com/shop/?utm_source=WordPress&utm_medium=dbc-backup-installed&utm_campaign=WordPress-Plugin">Learn more about digital marketing or WordPress</a> with Damien.</li>
 							</ul>
 							</div>
 						</div>			
-						<div class="postbox">
-							<h3><span>Latest from Damien</span></h3>
-							<div class="inside">
-								<?php dbc_isotope_rss_display() ?>
-							</div>
-						</div>		
-						<!-- ... more boxes ... -->
 			
 					</div> <!-- .inner-sidebar -->
 		
@@ -169,7 +163,7 @@ else
 		SETTINGS 
 	    -->	
 			<div class="postbox">
-				<h3><span>SETTINGS</span></h3>
+				<h3><span>Backup Schedule & Backup Now</span></h3>
 				<div class="inside">
 					<ul class="subsubsub">
 		<li><form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>"> 
@@ -216,7 +210,7 @@ else
 			</td>
 		</tr>
 		<tr valign="top">
-			<th scope="row" nowrap="nowrap"><?php _e('Scheduled Backup:', 'dbcbackup'); ?><br /><?php _e('Server Dates/Times', 'dbcbackup'); ?></th>
+			<th scope="row" nowrap="nowrap"><?php _e('Backup Schedule:', 'dbcbackup'); ?><br /><?php _e('Server Dates/Times', 'dbcbackup'); ?></th>
 			<td><?php 
 				list($hours, $minutes, $seconds) = explode('-', date('G-i-s', $cfg['schedule'])); 
 				$times = array('hours', 'minutes', 'seconds');
@@ -243,7 +237,7 @@ else
 				$selected = ($period == $speriod) ? 'selected' : ''; ?>
 				<option value="<?php echo $period; ?>" <?php echo $selected; ?>><?php echo $display; ?></option>
 				<?php endforeach; ?>
-				</select><?php
+				</select> at this time</p><?php
 				
 				foreach($times AS $time):
 					$max = $time == 'hours' ? 24 : 60; ?><label>
@@ -255,9 +249,9 @@ else
 					<?php for ($i = 0; $i<$max; $i++): $selected = ($$time == $i) ? 'selected' : ''; ?>
 					<option value="<?php echo $i; ?>" <?php echo $selected; ?>><?php echo $i; ?></option>
 					<?php endfor; ?>
-					</select></label>&nbsp;<?
-				endforeach;
-				_e('Active:', 'dbcbackup'); ?> <input style="display:inline" type="checkbox" name="active" value="1" <?php echo ($cfg['active'] ? 'checked="checked"' : ''); ?> /><br />		
+					</select></label>&nbsp;
+					<?php endforeach;?></p>
+				<?php _e('Active:', 'dbcbackup'); ?> <input style="display:inline" type="checkbox" name="active" value="1" <?php echo ($cfg['active'] ? 'checked="checked"' : ''); ?> /></p>		
 				<?php if($next_scheduled = wp_next_scheduled('dbc_backup')):
 						_e('Next Schedule is on: ', 'dbcbackup');  echo date('Y-m-d H:i:s', $next_scheduled); ?> | <?php
 					endif;
@@ -292,7 +286,7 @@ else
 			</div>
 		<!-- DBC BACKUP LOG -->					
 			<div class="postbox">
-				<h3><span>BACKUP LOG</span></h3>
+				<h3><span>Backup Log</span></h3>
 				<div class="inside">
 					<?php 
 		/* 
