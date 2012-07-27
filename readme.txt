@@ -1,18 +1,18 @@
 === Plugin Name ===
 Contributors: damiensaunders
 Donate link: 
-Tags: Database, Cron, Backup, Schedule, Logs, SQL
+Tags: Database, Cron, Backup, Schedule, SQL
 Requires at least: 3.0
 Tested up to: 3.4.1
-Stable tag: 2.0
+Stable tag: 2.1
 
 DBC Backup 2 is a safe & simple way to schedule regular WordPress database backups using the wp-cron batch jobs.
 
 == Description ==
 
-DBC Backup 2 is a * safe & simple way to schedule regular WordPress database backups* using the built-in batch jobs. You select when and where your backup will be generated. 
-
-The backup file is saved to directory on your web server which for many people is free storage and more reliable then saving to your home computer.
+DBC Backup 2 can give you the confidence that your WordPress database is backed-up and securely stored on your server.
+ 
+You select when and where your backup will be generated. The backup file is saved to directory on your web server which for many people is free storage and more reliable then saving to your home computer.
 
 = Key Features =
 * Secure - The file name includes some random characters which makes it impossible for someone to guess the backup name and download it.
@@ -33,7 +33,7 @@ DBC Backup was built to be fast, flexible and as simple as possible.
 I've used this plugin for several years and was disappointed that the author Chris T aka Tefra no longer maintained it so I have forked it. I tried to contact the author but without any luck.
 
 = Checkout my other work =
-* [Damien](http://damien.co/blog?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin) - strategy, technical development and digital marketing
+* [Damien](http://damien.co/blog?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin) - digital marketing strategy, technical development and digital marketing
 * [Ideas for WordPress](http://wordpress.damien.co/?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin)
 * [Plugins for WordPress](http://wordpress.damien.co/plugins?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin)
 
