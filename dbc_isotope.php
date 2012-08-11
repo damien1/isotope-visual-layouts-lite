@@ -32,7 +32,9 @@ function dbc_isotope_add_my_stylesheet() {
     wp_enqueue_style( 'dbc_isotope-style' );
 }
 
-// Add Hook for Menu under Appearance
+/**
+ * Add Hook for Menu under Appearance
+ */
 add_action('admin_menu', 'dbc_isotope');
 function dbc_isotope() 
 {
@@ -43,17 +45,26 @@ function dbc_isotope()
 }
 
 
-// Add shortcode function
+/**
+ * Add shortcode function
+ * usage example
+ * [dbc_isotope posts=5] will show 5 posts
+ * [dbc_isotope posts=-1] will show all posts
+ * @param default is 10 posts
+ */
 add_shortcode('dbc_isotope', 'dbc_isotope_shortcode_handler');
  
 function dbc_isotope_shortcode_handler($atts) {
+	extract(shortcode_atts(array(
+      'posts' => 10,
+      ), $atts));
 	global $add_my_script;
-	
-	$add_my_script = true; ?>
-	<!-- #isotope for WordPress by Damien http://damien.co/isotope  -->
+	$add_my_script = true; 
+	?>
+	<!-- Isotope for WordPress by Damien http://wordpress.damien.co/isotope  -->
 	<div id="isocontent">
 	<?php 
-		$query = new WP_Query( 'posts_per_page=-1' );
+		$query = new WP_Query(array('orderby' => 'date', 'order' => 'ASC' , 'posts_per_page' => $posts));
 			while ($query->have_posts()) : $query->the_post(); ?>
 			<div class="box box<?php $category = get_the_category(); echo $category[0]->cat_ID; ?>">
 			<p><?php $category = get_the_category(); echo $category[0]->cat_name;?></p>
@@ -62,16 +73,8 @@ function dbc_isotope_shortcode_handler($atts) {
 			</div>
 			<?php endwhile; ?> 
 			</div><!-- #isocontent -->
+			<?php include("inc/myfile.php"); 
 			
-	<script type="text/javascript">
-	jQuery(document).ready(function() {
-    var mycontainer = jQuery('#isocontent');
-      mycontainer.isotope({
-      itemSelector: '.box'
-      });
-    });
-   </script>
-<?php   		
 }
 
 
