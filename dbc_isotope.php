@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: DBC Isotope
+Plugin Name: Isotope Visual Post Layouts
 Plugin URI: http://wordpress.damien.co/isotope?utm_source=WordPress&utm_medium=isotope&utm_campaign=WordPress-Plugin
-Description: A plugin to add Isotope & Masonry to your website. 
+Description: Add visual effects to your list of posts & custom post types using Isotope. Needs a responsive theme   
 Version: 0.2
 Author: Damien Saunders
 Author URI: http://damien.co/?utm_source=WordPress&utm_medium=isotope&utm_campaign=WordPress-Plugin
-License: Portions GPLv3 - Isotope js Commercial Licence required
+License: This plugin GPLv3 - changes to the HTML / CSS do require a licence.
 */
 
 /**
@@ -50,50 +50,45 @@ function dbc_isotope()
  * usage example
  * [dbc_isotope posts=5] will show 5 posts
  * [dbc_isotope posts=-1] will show all posts
- * @param default is 10 posts
+ * [dbc_isotope posts=-1 post_type=feedback] will show all posts from custom post type feedback
+ * @param posts default is 10
+ * @param cat default is all
  */
 add_shortcode('dbc_isotope', 'dbc_isotope_shortcode_handler');
  
 function dbc_isotope_shortcode_handler($atts) {
 	extract(shortcode_atts(array(
       'posts' => 10,
-      ), $atts));
-	global $add_my_script;
-	$add_my_script = true; 
+      'cats' => '',
+      'post_type' => ''
+      ), 
+      $atts));
+	 $ds_cats2 = $cats;
+	 $ds_posttype = $post_type;
+	 include("inc/myfile.php"); 
 	?>
+	<div class="clearboth"></div>
 	<!-- Isotope for WordPress by Damien http://wordpress.damien.co/isotope  -->
-	<div id="isocontent">
+	<div id="isocontent" class="isotope">
 	<?php 
-		$query = new WP_Query(array('orderby' => 'date', 'order' => 'ASC' , 'posts_per_page' => $posts));
-			while ($query->have_posts()) : $query->the_post(); ?>
-			<div class="box box<?php $category = get_the_category(); echo $category[0]->cat_ID; ?>">
-			<p><?php $category = get_the_category(); echo $category[0]->cat_name;?></p>
-			<a href="<?php the_permalink() ?>"><?php the_title(); ?></a> 
-			<p><?php echo $post->ID; ?></p>
-			</div>
-			<?php endwhile; ?> 
-			</div><!-- #isocontent -->
-			<?php include("inc/myfile.php"); 
 			
-}
-
-
-//RSS feed
-function dbc_isotope_rss_display()
-{
-$dbc_feed = 'http://damien.co/feed';
-
-echo '<div class="rss-widget">';
-
-wp_widget_rss_output( array(
-	'url' => $dbc_feed,
-	'title' => 'RSS Feed',
-	'items' => 3,
-	'show summary' => 1,
-	'show_author' => 0,
-	'show date' => 0,
-	));
-echo '</div>';
-}
+		$query = new WP_Query(array(
+		'post_type' => $ds_posttype,
+		'orderby' => 'date', 
+		'order' => 'ASC' , 
+		'cat' => $ds_cats2, 
+		'posts_per_page' => $posts
+		));
+		$return = '';			
+		while ($query->have_posts()) : $query->the_post(); 
+			$category = get_the_category(); 
+				$return .= '<div class="box box' . $category[0]->cat_ID . '"><a href="' . get_permalink() . '">' . get_the_title() . '</a></div>';
+		endwhile;
+		// return the output
+		return $return;?>
+	</div> <!-- #isocontent -->
+	<?php 
+	
+			}
 
 ?>
