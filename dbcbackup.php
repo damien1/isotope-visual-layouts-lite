@@ -10,6 +10,21 @@ License: GPLv2 or later
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+// Only create an instance of the plugin if it doesn't already exists in GLOBALS  
+if( ! array_key_exists( 'dbc-backup-2', $GLOBALS ) ) { 
+    class Dbcbackup { 
+        function __construct() { 
+        } // end constructor 
+    } // end class 
+    // Store a reference to the plugin in GLOBALS so that our unit tests can access it 
+    $GLOBALS['dbc-backup-2'] = new Dbcbackup();  
+} // end if  
+
+
+
+
+
 /*
  * Save User Options to WPDB
  */	
