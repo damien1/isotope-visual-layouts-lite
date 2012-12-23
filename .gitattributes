@@ -1,0 +1,8 @@
+/assets export-ignore
+/testing export-ignore
+/tests export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+readme.md export-ignore
+.DS_Store export-ignore
+isotope.json export-ignore
