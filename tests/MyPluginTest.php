@@ -2,11 +2,11 @@
 /**
  * MyPlugin Tests
  */
-class Visual_Layouts_Filtrify_Tests extends WP_UnitTestCase {  
+class Dbcbackup_Tests extends WP_UnitTestCase {  
     private $plugin;  
     function setUp() {  
         parent::setUp();  
-        $this->plugin = $GLOBALS['visual-layouts-filtrify'];  
+        $this->plugin = $GLOBALS['dbc-backup-2'];  
     } // end setup  
     function testPluginInitialization() {  
         $this->assertFalse( null == $this->plugin );  
