@@ -8,6 +8,7 @@ Author URI: http://damien.co/?utm_source=WordPress&utm_medium=dbc-backup&utm_cam
 License: GPLv2 or later
 */
 if ( ! defined( 'ABSPATH' ) ) exit;
+
 if(!defined('WP_ADMIN') OR !current_user_can('manage_options')) wp_die(__('You do not have sufficient permissions to access this page.'));
 
 dbcbackup_locale();
@@ -88,7 +89,7 @@ if(!empty($cfg['export_dir']))
 			{
 				if($file = @fopen($cfg['export_dir'].'/'.$condom, 'w')) 
 				{	
-					$cofipr =  ($condom == 'index.html')? '' : "Order allow,deny\ndeny from all";
+					$cofipr =  ($condom == 'index.html')? '' : "order deny,allow\ndeny from all\nallow from 127.0.0.1";
 					fwrite($file, $cofipr);
 					fclose($file);
 					$dbc_msg[] =  sprintf(__("File <strong>%s</strong> was created.", 'dbcbackup'), $condom);
@@ -308,13 +309,16 @@ else
 					<tbody>
 					<?php 
 					$i = 0;
-					foreach($cfg['logs'] AS $log): ?>
+					foreach($cfg['logs'] AS $log): 
+						$download_icon = '<img src="' .plugins_url( 'images/glyphicons_200_download.png' , __FILE__ ). '" > ';
+						$dbc_file_name = attribute_escape($cfg['export_dir']).'/'.basename($log['file']);
+						?>
 					  <tr>
 						<td><?php echo ++$i; ?></td>
 						<td><?php echo date('Y-m-d H:i:s', $log['started']); ?></td>
 						<td><?php echo $log['status']; ?></td>
 						<td><?php echo round($log['took'], 3); ?> <?php _e('seconds', 'dbcbackup'); ?></td>
-						<td><?php echo basename($log['file']); ?></td>
+						<td><?php echo basename($log['file']); ?><a href="<?php echo $dbc_file_name; ?>"><?php echo $download_icon; ?></a></td>
 						<td><?php echo size_format($log['size'], 2); ?></td>
 						<td><?php echo sprintf(__("%s old backups", 'dbcbackup'), intval($log['removed'])); ?></td>
 					  </tr>
