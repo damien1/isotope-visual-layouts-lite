@@ -3,7 +3,7 @@ Contributors: damiensaunders
 Donate link: 
 Tags: Database, Cron, Backup, Schedule, SQL
 Requires at least: 3.0
-Tested up to: 3.4.2
+Tested up to: 3.5
 Stable tag: 2.1.1
 
 DBC Backup 2 is a safe & simple way to schedule regular WordPress database backups using the wp-cron batch jobs.
