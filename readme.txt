@@ -1,95 +1,107 @@
-=== Plugin Name ===
+=== Isotope Visual Post Layouts ===
 Contributors: damiensaunders
 Donate link: 
-Tags: Isotope, Masonry, CSS, customisation, jquery, filter
+Tags: List Posts, Category List, List Custom Post, Isotope, Masonry, CSS, visual effect, animation, jquery, filter, HTML5
 Requires at least: 3.3
-Tested up to: 3.4.1
-Stable tag: 1.0
+Tested up to: 3.5
+Stable tag: 1.00
 
-Adds support for Isotope by Metafizzy and custom stylesheet
+Add stunning visual effects to your list of posts & custom post types using Isotope. Needs a responsive theme.
 
 == Description ==
 
-Adds support for Isotope by Metafizzy and custom stylesheet
+**Bring your website to life** - with stunning animation and visual effects thanks to Isotope by Metafizzy. 
+
+You'll have a sticky note style visual layout and can choose to list all your posts or selected posts.  You can even use custom post types.
+
+Just create a page or post and add the shortcode [dbc_isotope]
 
 
-= Checkout my other work =
-* [Damien](http://damien.co/blog?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin) - strategy, technical development and digital marketing
-* [Ideas for WordPress](http://wordpress.damien.co/?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin)
-* [Plugins for WordPress](http://wordpress.damien.co/plugins?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin)
+
+**No coding and no theme to modify**
+This is not a theme and you don't need to know anything about HTML or CSS or coding. Just activate the plugin and create a new page (or post) this will save you hours of research on the Internet.
+
+###GET 30% off a PRO licence 
+<a target="_blank" href="http://whitetshirtdigital.com/shop/isotope-for-wordpress-plugin-pro-licence/?utm_source=WordPress&utm_medium=dbc-isotope-installed&utm_campaign=WordPress-Plugin-50OFF">Get 30% off a PRO licence</a> - enter ISOTOPE at the checkout.
+
+Pro Licence entitles you to support by e-mail and to change the CSS and HTML produced by the plugin.
+
+
+### Checkout my other work
+* [Damien](http://damien.co/blog?utm_source=WordPress&utm_medium=dbc-isotope&utm_campaign=WordPress-Plugin) - strategy, technical development and digital marketing
+* [Ideas for WordPress](http://wordpress.damien.co/?utm_source=WordPress&utm_medium=dbc-isotope&utm_campaign=WordPress-Plugin)
+* [Plugins for WordPress](http://wordpress.damien.co/plugins?utm_source=WordPress&utm_medium=dbc-isotope&utm_campaign=WordPress-Plugin)
 
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
 
-e.g.
-
-1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+1. Upload the folder `isotope-visual-post-layouts` to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Go to the Isotope link under 'Appearances' for basic FAQ
+4. Create a page or post and add the shortcode [dbc_isotope]
+5. Publish the page and view the results
 
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= What Shortcodes are Supported? =  
+* [dbc_isotope] will default to your most recent 10 posts  
+* [dbc_isotope posts=-1] will list all posts  
+* [dbc_isotope posts=5 cat=1,3] will list 5 posts in category 1 and 5  
+* [dbc_isotope post_type=feedback] will list 10 posts in custom post type called feedback 
+* [dbc_isotope order=DESC] defaults to most recent posts first but you can change this to ASC to go with oldest.
 
-An answer to that question.
+= Do I need a licence to use this? =
 
-= What about foo bar? =
+New Isotope licence terms, mean you don't need a licence to use this plugin *as-is*
 
-Answer to foo bar dilemma.
+= Can I change your CSS / HTML or the Isotope Javascript? =
+
+You can change the CSS or the JS with a commercial licence from Metafizzy and a Pro licence from me. 
+
+Please remember that I paid for a licence so you can use this for free.
+
+
+= When I resize my browser window smaller nothing happens =
+
+Hmm it sounds like your theme has fixed widths. You need a responsive theme for the resize animation effect to work.
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the directory of the stable readme.txt, so in this case, `/tags/4.3/screenshot-1.png` (or jpg, jpeg, gif)
-2. This is the second screen shot
+1. Isotope Settings Page -- not much too it really just some helpful tips to get you started
+2. The finished page showing 10 recent posts. Resize your browser window to see them animate.
 
 == Changelog ==
 
 = 1.0 =
-* A change since the previous version.
-* Another change.
+* Introduced 7 colour styles
+* 3 options - Image only, Image & Text, Text only
+* Re-written the wp_query engine.
+* Fixed - can now be used anywhere on a page or post
 
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
+= 0.33 =
+* Added custom update notifications as we're not in WordPress.org anymore.
 
-== Upgrade Notice ==
+= 0.32 =
+* Fixed - broken Settings link and wrong url in this readme.
 
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
+= 0.31 =
+* Fixed - broken Settings link and wrong url in this readme.
 
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
+= 0.3 =
+* Fixed order - now defaults to most recent posts first.
+* Added order shortcode attribute  [dbc_isotope order=ASC]  or order=DESC
 
-== Arbitrary section ==
+= 0.2 =
+* Introduces the shortcode [dbc_isotope]
+* No need to code or move files
+* List posts by category
+* List custom post type
+* New Isotope licence terms, mean you don't need a licence to use this plugin as-is
 
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
+= 0.1 =
+* Plugin adds the custom stylesheet and Isotope javascript
+* Copy / move the isotope_template.php to your theme directory
 
-== A brief Markdown Example ==
 
-Ordered list:
-
-1. Some feature
-1. Another feature
-1. Something else about the plugin
-
-Unordered list:
-
-* something
-* something else
-* third thing
-
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
-[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
-
-Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-`<?php code(); // goes in backticks ?>`

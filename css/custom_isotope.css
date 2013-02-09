@@ -4,26 +4,170 @@ Theme URI: http://wordpress.damiensaunders.com
 Author: Damien Saunders
 */
 
-#isocontent{position:relative; width:90%; overflow:hidden;}
-.box{position:relative; 
-width:100px; 
-height:100px;
+/* Start: Damien's Isotope styles */
+
+#isocontent{}
+
+#isocontent .box{
+position:relative; 
+max-width: 250px; 
 float:left; 
 overflow: hidden; 
 position: relative;
-background-color:yellow;
-background-image:-webkit-linear-gradient(top, #FFEE90 0%, #FFE44E 100%);
-  color:#000000;
-  margin-top:10px;
-  margin-left: 10px;
-  padding-bottom:5px;
-  padding-left:5px;
-  padding-right:5px;
-  padding-top:5px;
+margin-top:1px;
+margin-left: 1px;
+  padding-bottom:1px;
+  padding-left:1px;
+  padding-right:1px;
+  padding-top:1px;
   position:relative;
   text-shadow:none;
   font-size:14px;
+}
+
+#isocontent .boxYellow{
+background-color:yellow;
+background-image:-webkit-linear-gradient(top, #FFEE90 0%, #FFE44E 100%);
+  color:#000000;
+    font-family: "special elite";
+}
+
+
+
+
+#isocontent .boxViolet{position:relative; 
+float:left; 
+overflow: hidden; 
+position: relative;
+min-height: 100px;
+max-width: 200px;
+background-color: #7a81ff;
+background-image: -webkit-gradient(radial, 0% 0%,0,0% 0%,200, from(rgb(148, 55, 255)), to(rgb(122, 129, 255)));
+background-image: -webkit-radial-gradient(0% 0%, rgb(122, 129, 255), rgb(148, 55, 255));
+background-image: -moz-radial-gradient(0% 0%, rgb(122, 129, 255), rgb(148, 55, 255));
+background-image: -o-radial-gradient(0% 0%, rgb(122, 129, 255), rgb(148, 55, 255));
+background-image: -ms-radial-gradient(0% 0%, rgb(122, 129, 255), rgb(148, 55, 255));
+background-image: radial-gradient(0% 0%, rgb(122, 129, 255), rgb(148, 55, 255));
   font-family: "special elite";
+}
+
+#isocontent .boxRed{
+position:relative; 
+float:left; 
+overflow: hidden; 
+min-height: 100px;
+max-width: 200px;
+background-color: #ff2600;
+background-image: -webkit-gradient(radial, 0% 0%,0,0% 0%,200, from(rgb(255, 47, 146)), to(rgb(255, 38, 0)));
+background-image: -webkit-radial-gradient(0% 0%, rgb(255, 38, 0), rgb(255, 47, 146));
+background-image: -moz-radial-gradient(0% 0%, rgb(255, 38, 0), rgb(255, 47, 146));
+background-image: -o-radial-gradient(0% 0%, rgb(255, 38, 0), rgb(255, 47, 146));
+background-image: -ms-radial-gradient(0% 0%, rgb(255, 38, 0), rgb(255, 47, 146));
+background-image: radial-gradient(0% 0%, rgb(255, 38, 0), rgb(255, 47, 146));
+  margin-top:2px;
+  margin-left: 2px;
+  font-family: "special elite";  
+
+}
+
+#isocontent .boxGreen{
+position:relative; 
+float:left; 
+overflow: hidden; 
+min-height: 100px;
+max-width: 200px;
+background-color: #8efa00;
+background-image: -webkit-gradient(radial, 0% 0%,0,0% 0%,200, from(rgb(0, 251, 146)), to(rgb(142, 250, 0)));
+background-image: -webkit-radial-gradient(0% 0%, rgb(142, 250, 0), rgb(0, 251, 146));
+background-image: -moz-radial-gradient(0% 0%, rgb(142, 250, 0), rgb(0, 251, 146));
+background-image: -o-radial-gradient(0% 0%, rgb(142, 250, 0), rgb(0, 251, 146));
+background-image: -ms-radial-gradient(0% 0%, rgb(142, 250, 0), rgb(0, 251, 146));
+background-image: radial-gradient(0% 0%, rgb(142, 250, 0), rgb(0, 251, 146));
+  margin-top:2px;
+  margin-left: 2px;
+  font-family: "special elite";  
+
+}
+
+#isocontent .boxBlue{
+position:relative; 
+float:left; 
+overflow: hidden; 
+min-height: 100px;
+max-width: 200px;
+background-color: #00fdff;
+background-image: -webkit-gradient(radial, 100% 0%,0,100% 0%,200, from(rgb(0, 150, 255)), to(rgb(0, 253, 255)));
+background-image: -webkit-radial-gradient(100% 0%, rgb(0, 253, 255), rgb(0, 150, 255));
+background-image: -moz-radial-gradient(100% 0%, rgb(0, 253, 255), rgb(0, 150, 255));
+background-image: -o-radial-gradient(100% 0%, rgb(0, 253, 255), rgb(0, 150, 255));
+background-image: -ms-radial-gradient(100% 0%, rgb(0, 253, 255), rgb(0, 150, 255));
+background-image: radial-gradient(100% 0%, rgb(0, 253, 255), rgb(0, 150, 255));
+  margin-top:2px;
+  margin-left: 2px;
+  font-family: "special elite";  
+
+}
+
+#isocontent .boxOrange{
+position:relative; 
+float:left; 
+overflow: hidden; 
+min-height: 100px;
+max-width: 200px;
+background-color: #ff7e79;
+background-image: -webkit-gradient(radial, 100% 0%,0,100% 0%,200, from(rgb(255, 147, 0)), to(rgb(255, 126, 121)));
+background-image: -webkit-radial-gradient(100% 0%, rgb(255, 126, 121), rgb(255, 147, 0));
+background-image: -moz-radial-gradient(100% 0%, rgb(255, 126, 121), rgb(255, 147, 0));
+background-image: -o-radial-gradient(100% 0%, rgb(255, 126, 121), rgb(255, 147, 0));
+background-image: -ms-radial-gradient(100% 0%, rgb(255, 126, 121), rgb(255, 147, 0));
+background-image: radial-gradient(100% 0%, rgb(255, 126, 121), rgb(255, 147, 0));
+  margin-top:2px;
+  margin-left: 2px;
+  font-family: "special elite";  
+
+}
+
+#isocontent .boxWhite{
+position:relative; 
+float:left; 
+overflow: hidden; 
+min-height: 100px;
+max-width: 200px;
+background-color: #ffffff;
+background-image: -webkit-gradient(radial, 100% 0%,0,100% 0%,200, from(rgb(235, 235, 235)), to(rgb(255, 255, 255)));
+background-image: -webkit-radial-gradient(100% 0%, rgb(255, 255, 255), rgb(235, 235, 235));
+background-image: -moz-radial-gradient(100% 0%, rgb(255, 255, 255), rgb(235, 235, 235));
+background-image: -o-radial-gradient(100% 0%, rgb(255, 255, 255), rgb(235, 235, 235));
+background-image: -ms-radial-gradient(100% 0%, rgb(255, 255, 255), rgb(235, 235, 235));
+background-image: radial-gradient(100% 0%, rgb(255, 255, 255), rgb(235, 235, 235));
+  margin-top:2px;
+  margin-left: 2px;
+  font-family: "special elite";  
+
+}
+
+
+
+#isocontent .wp-post-image{
+	display:block;
+	margin:auto;
+   }
+
+#isocontent a{
+	text-decoration: none;
+	color:#000000;
+  }
+
+#isocontent .ftext{
+	background-color: white;
+	padding-bottom:3px;
+	padding-left:3px;
+	padding-right:3px;
+	padding-top:3px;
+	position:relative;
+	text-shadow:grey;
+	font-size:16px;
+
 }
 
 /* Start: Recommended Isotope styles */
