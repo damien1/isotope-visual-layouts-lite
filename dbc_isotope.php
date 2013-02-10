@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Isotope Visual Post Layouts
+Plugin Name: Isotope Visual Layouts lite
 Plugin URI: http://wordpress.damien.co/isotope?utm_source=WordPress&utm_medium=isotope&utm_campaign=Isotope-Layouts
 Description: Add visual effects to your list of posts & custom post types using Isotope. Needs a responsive theme   
-Version: 1.0
+Version: 1.1
 Author: Damien Saunders
 Author URI: http://damien.co/?utm_source=WordPress&utm_medium=isotope&utm_campaign=Isotope-Layouts
 License: This plugin GPLv3 - All changes to the HTML / CSS or Javascript do require a licence.
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Globals
  */
-define ("VERSION", "1.0");
+define ("ISOTOPE_LITE_VERSION", "1.1");
 
 $plugin = plugin_basename(__FILE__); 
 
@@ -41,9 +41,9 @@ return $isotope_vpl_option;
 
 require 'inc/plugin-update-checker.php';
 $IsotopeUpdateChecker = new PluginUpdateChecker(
-    'http://damien.co/isotope.json',
+    'http://damien.co/lite-isotope.json',
     __FILE__,
-    'isotope-visual-post-layouts'
+    'isotope-visual-layouts-lite'
     );
 
 
@@ -133,7 +133,7 @@ function dbc_isotope_shortcode_handler($atts) {
 	 $isotope_vpl_images = $isotope_vpl_option["dropdown2"];
 
 	 ?>
-	<!-- Isotope for WordPress by Damien http://wordpress.damien.co/isotope  -->
+	<!-- Isotope Visual Layouts Lite for WordPress by Damien http://wordpress.damien.co/isotope  -->
 	<?php 
 		$args = (array(
 		'post_type' => $ds_posttype,
@@ -142,41 +142,56 @@ function dbc_isotope_shortcode_handler($atts) {
 		'cat' => $ds_cats2, 
 		'numberposts' => $posts
 		));
-		global $post;
-		$isotope_posts = get_posts($args);
+		global $post, $blogid;
+		
+		$isotope_vpl_current_site ='';
+		$isotope_vpl_current_site = get_current_blog_id();
+		$isotope_vpl_current_site .='_isotope_query';
+		
+		
+		// Get any existing copy of our transient data
+		if ( false === ( $isotope_posts = get_transient( $isotope_vpl_current_site ) ) ) {
+			// It wasn't there, so regenerate the data and save the transient
+			$isotope_posts = get_posts($args);;
+			set_transient( $isotope_vpl_current_site, $isotope_posts );
+     }
+
+
+		
+	
         			
 		/**
 		 * depending on the option in the database to include featured images	
 		 */			
 		switch ($isotope_vpl_images) {
 		case 'Image Only'; // try this with a photoblog or custom post type
-		$return='<div id="isocontent">';			
+		$isotope_vpl_return='<div id="isocontent">';			
 		foreach( $isotope_posts as $post ) :	setup_postdata($post);
-		$return .= '<div class="box box'.$isotope_vpl_style.'"><a href="'.get_permalink().'">'.get_the_post_thumbnail($id, 'thumbnail', array('class' => 'dsimage')).'</a></div>';
+		$isotope_vpl_return .= '<div class="box box'.$isotope_vpl_style.'"><a href="'.get_permalink().'">'.get_the_post_thumbnail($id, 'thumbnail', array('class' => 'dsimage')).'</a></div>';
 		endforeach;
-		$return.='</div>';
+		$isotope_vpl_return.='</div>';
 		// return the output
-		return $return;
+		return $isotope_vpl_return;
 		break;
 		
 		case 'Image with Text'; // the default option
-		$return='<div id="isocontent">';			
+		$isotope_vpl_return='<div id="isocontent">';			
 		foreach( $isotope_posts as $post ) :	setup_postdata($post);
-		$return .= '<div class="box box'.$isotope_vpl_style.'"><a href="'.get_permalink().'">'.get_the_post_thumbnail($id, 'thumbnail', array('class' => 'dsimage')).'<div class="ftext">'.get_the_title().'</div></a></div>';
+		$isotope_vpl_return .= '<div class="box box'.$isotope_vpl_style.'"><a href="'.get_permalink().'">'.get_the_post_thumbnail($id, 'thumbnail', array('class' => 'dsimage')).'<div class="ftext">'.get_the_title().'</div></a></div>';
 		endforeach;
-		$return.='</div>';
+		$isotope_vpl_return.='</div>';
 		// return the output
-		return $return;
+		return $isotope_vpl_return;
 		break;
 		
 		case 'Text Only'; // No Image
-		$return='<div id="isocontent">';			
+		$isotope_vpl_return='<div id="isocontent">';			
 		foreach( $isotope_posts as $post ) :	setup_postdata($post);
-		$return .= '<div class="box box'.$isotope_vpl_style.'"><a href="'.get_permalink().'"><div class="ftext">'.get_the_title().'</a></div></div>';
+		$isotope_vpl_return .= '<div class="box box'.$isotope_vpl_style.'"><a href="'.get_permalink().'"><div class="ftext">'.get_the_title().'</a></div></div>';
 		endforeach;
-		$return.='</div>';
+		$isotope_vpl_return.='</div>';
 		// return the output
-		return $return;
+		return $isotope_vpl_return;
 		break;
 		
 		}	
@@ -223,7 +238,7 @@ function isotope_vpl_set_default_options() {
 	if (get_option('isotope_options') === false){
 		$new_options['dropdown1'] = "Yellow";
 		$new_options['dropdown2'] = "Image with Text";
-		$new_options['version'] = VERSION;
+		$new_options['version'] = ISOTOPE_LITE_VERSION;
 		add_option('isotope_options', $new_options);
 		add_option('damien_style', "isotope");
 	}
@@ -239,7 +254,6 @@ add_action('admin_init', 'isotope_vpl_plugin_admin_init');
 function isotope_vpl_plugin_admin_init(){
 register_setting( 'isotope_vpl_plugin_options', 'isotope_options');
 add_settings_section('isotope_vpl_plugin_main', 'Plugin Settings', 'isotope_vpl_plugin_section_text', 'dbc_isotope');
-//add_settings_field('isotope_vpl_plugin_text_string', 'Plugin Text Input', 'plugin_setting_string', 'dbc_isotope', 'isotope_vpl_plugin_main');
 add_settings_field('isotope_vpl_drop_down1', 'Colour', 'isotope_vpl_setting_dropdown_fn', 'dbc_isotope', 'isotope_vpl_plugin_main');
 add_settings_field('isotope_vpl_drop_down2', 'Featured Image', 'isotope_vpl_setting_thumbnails_fn', 'dbc_isotope', 'isotope_vpl_plugin_main');
 }
@@ -305,6 +319,9 @@ function isotope_vpl_plugin_options_page() {
 
 <?php
 }
+
+
+
 
 /**
  * Uninstall function

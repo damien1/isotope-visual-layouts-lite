@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <div class="wrap">
 	<div id="icon-options-general" class="icon32"></div>
-	<h2>Isotope Visual Layouts</h2>
+	<h2>Isotope Visual Layouts Lite</h2>
 	
 	<div class="metabox-holder has-right-sidebar">
 		
@@ -20,8 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 				<h3><span>Thanks from Damien</span></h3>
 				<div class="inside">
 		<p>Thanks for installing this. 
-		<br /><a target="_blank" href="http://damien.co/?utm_source=WordPress&utm_medium=dbc-isotope-installed&utm_campaign=Isotope-Layouts">Damien</a></p> 
-		<p>Please add yourself to <a target="_blank" href="http://wordpress.damien.co/wordpress-mailing-list/?utm_source=WordPress&utm_medium=dbc-isotope-installed&utm_campaign=Isotope-Layouts">my mailing list</a> to be the first to hear about updates for this plugin.</p>
+		<br /><a target="_blank" href="http://damien.co/?utm_source=WordPress&utm_medium=dbc-isotope-lite-installed&utm_campaign=Isotope-Layouts">Damien</a></p> 
+		<p>Please add yourself to <a target="_blank" href="http://wordpress.damien.co/wordpress-mailing-list/?utm_source=WordPress&utm_medium=dbc-isotope-lite-installed&utm_campaign=Isotope-Layouts">my mailing list</a> to be the first to hear about updates for this plugin.</p>
 		<p>Let me and your friends know you installed this:</p>
 	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://wordpress.damien.co/isotope" data-counturl="http://wordpress.damien.co/isotope" data-count="horizontal" data-via="damiensaunders">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>	
 
@@ -32,8 +32,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 				<h3><span>Help & Support</span></h3>
 				<div class="inside">
 					<ul>
-					<li><a target="_blank" href="http://wordpress.damien.co/isotope/?utm_source=WordPress&utm_medium=dbc-isotope-installed&utm_campaign=Isotope-Layouts">Help & FAQ's</a></li>
-					<li><a target="_blank" href="http://wordpress.damien.co/?utm_source=WordPress&utm_medium=dbc-isotope-installed&utm_campaign=Isotope-Layouts">More WordPress Tips & Ideas</a></li>
+					<li><a target="_blank" href="http://wordpress.damien.co/isotope/?utm_source=WordPress&utm_medium=dbc-isotope-lite-installed&utm_campaign=Isotope-Layouts">Help & FAQ's</a></li>
+					<li><a target="_blank" href="http://wordpress.damien.co/?utm_source=WordPress&utm_medium=dbc-isotope-lite-installed&utm_campaign=Isotope-Layouts">More WordPress Tips & Ideas</a></li>
 					</ul>
 				</div>
 			</div>
@@ -42,7 +42,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 				<div class="inside">
 				<p>Here's another plugin of mine that I think you'll need.</p>
 				<ul>
-					<li><a target="_blank" href="http://wordpress.damien.co/dbc-backup-2/?utm_source=WordPress&utm_medium=dbc-isotope-installed&utm_campaign=Isotope-Layouts">DBC Backup 2</a> - secure and easy backup for your WordPress SQL database. Automated schedule and delete older backups</li>
+					<li><a target="_blank" href="http://wordpress.damien.co/dbc-backup-2/?utm_source=WordPress&utm_medium=dbc-isotope--lite-installed&utm_campaign=Isotope-Layouts">DBC Backup 2</a> - secure and easy backup for your WordPress SQL database. Automated schedule and delete older backups</li>
 				</ul>
 				</div>
 			</div>			
@@ -73,7 +73,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		<?php isotope_vpl_plugin_options_page(); ?>
 		
 		<ul>
-		<li> Want to <a target="_blank" href="http://whitetshirtdigital.com/shop/isotope-for-wordpress-plugin-pro-licence/?utm_source=WordPress&utm_medium=dbc-isotope-installed&utm_campaign=Isotope-Layouts">change my CSS or HTML then please help by buying a licence from me</a></li>
+		<li> Want to <a target="_blank" href="http://whitetshirtdigital.com/shop/isotope-for-wordpress-plugin-pro-licence/?utm_source=WordPress&utm_medium=dbc-isotope-lite-installed&utm_campaign=Isotope-Layouts">change my CSS or HTML then please help by buying a licence from me</a></li>
 		</ul>
 		</div> <!-- .inside -->
 		</div>
