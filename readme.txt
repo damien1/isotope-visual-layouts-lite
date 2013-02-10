@@ -44,7 +44,7 @@ This is not a theme and you don't need to know anything about HTML or CSS or cod
 == Installation ==
 
 
-1. Upload the folder `isotope-visual-post-layouts` to the `/wp-content/plugins/` directory
+1. Upload the folder `isotope-visual-layouts-lite` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Go to the Isotope link under 'Appearances' for basic FAQ
 4. Create a page or post and add the shortcode [dbc_isotope]

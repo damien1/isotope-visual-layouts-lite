@@ -87,7 +87,7 @@ function dbc_isotope()
  * Add settings link on Installed Plugin page
  */
 function isotope_visual_post_types_settings_link($links) { 
-  $settings_link = '<a href="themes.php?page=isotope-visual-post-layouts/dbc-isotope-options.php">Settings</a>'; 
+  $settings_link = '<a href="themes.php?page=isotope-visual-layouts-lite/dbc-isotope-options.php">Settings</a>'; 
   array_unshift($links, $settings_link); 
   return $links; 
 }
