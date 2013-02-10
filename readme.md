@@ -21,13 +21,21 @@ Just create a page or post and add the shortcode [dbc_isotope]
 **No coding and no theme to modify**
 This is not a theme and you don't need to know anything about HTML or CSS or coding. Just activate the plugin and create a new page (or post) this will save you hours of research on the Internet.
 
-###GET 30% off a PRO licence 
-<a target="_blank" href="http://whitetshirtdigital.com/shop/isotope-for-wordpress-plugin-pro-licence/?utm_source=WordPress&utm_medium=dbc-isotope-installed&utm_campaign=WordPress-Plugin-50OFF">Get 30% off a PRO licence</a> - enter ISOTOPE at the checkout.
+##GET 30% off Isotope Pro plugin
+<a target="_blank" href="http://whitetshirtdigital.com/shop/isotope-for-wordpress-plugin-pro-licence/?utm_source=WordPress&utm_medium=isotope-lite-installed&utm_campaign=WordPress-Plugin-30OFF">Get 30% off a PRO licence</a> - enter ISOTOPE at the checkout.
 
-Pro Licence entitles you to support by e-mail and to change the CSS and HTML produced by the plugin.
+####Key Features
+* Includes Infinite Scroll for pagination
+* Extra layout for photo galleries / portfolios
+* Support by e-mail 
+* Licence to change the CSS and HTML produced by the plugin.
+* Per Client or Per Developer licence - you are free to use on any project where you are the developer or the client.
 
 
-### Checkout my other work
+
+
+
+## Checkout my other work
 * [Damien](http://damien.co/blog?utm_source=WordPress&utm_medium=dbc-isotope&utm_campaign=WordPress-Plugin) - strategy, technical development and digital marketing
 * [Ideas for WordPress](http://wordpress.damien.co/?utm_source=WordPress&utm_medium=dbc-isotope&utm_campaign=WordPress-Plugin)
 * [Plugins for WordPress](http://wordpress.damien.co/plugins?utm_source=WordPress&utm_medium=dbc-isotope&utm_campaign=WordPress-Plugin)
@@ -73,6 +81,10 @@ Hmm it sounds like your theme has fixed widths. You need a responsive theme for 
 2. The finished page showing 10 recent posts. Resize your browser window to see them animate.
 
 == Changelog ==
+= 1.1 =
+* Saves special query to a transient cache for 5 mins
+* Resolved - an issue where this plugin may have caused a conflict with other plugins
+* This is now a Free Plugin - get the Pro Plugin for more features
 
 = 1.0 =
 * Introduced 7 colour styles
