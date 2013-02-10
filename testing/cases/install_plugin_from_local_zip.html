@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="selenium.base" href="http://localhost/" />
+<link rel="selenium.base" href="http://10.10.0.9/wordpress/" />
 <title>install_plugin_from_local_zip</title>
 </head>
 <body>
@@ -12,8 +12,18 @@
 <tr><td rowspan="1" colspan="3">install_plugin_from_local_zip</td></tr>
 </thead><tbody>
 <tr>
+	<td>store</td>
+	<td>isotope-visual-post-layouts</td>
+	<td>plugin</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>D:\jenkins\jobs\${plugin}\workspace\</td>
+	<td>path</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
-	<td>link=Plugins 3</td>
+	<td>xpath=id('menu-plugins')/x:a</td>
 	<td></td>
 </tr>
 <tr>
@@ -29,7 +39,12 @@
 <tr>
 	<td>type</td>
 	<td>id=pluginzip</td>
-	<td>/Volumes/Proust/damien/Sites/single/wp-content/plugins/dbc_isotope.zip</td>
+	<td>${path}${plugin}.zip</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${path}${plugin}.zip</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -41,7 +56,21 @@
 	<td>link=Activate Plugin</td>
 	<td></td>
 </tr>
-
+<tr>
+	<td>open</td>
+	<td>http://single.local/wp-admin/plugins.php</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>There is a new version of Isotope Visual Post Layouts available</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>Plugin could not be activated because it triggered a fatal error.</td>
+	<td></td>
+</tr>
 </tbody></table>
 </body>
 </html>

@@ -4,51 +4,41 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost/" />
-<title>add_page_with_shortcode</title>
+<title>check_settings_link</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">add_page_with_shortcode</td></tr>
+<tr><td rowspan="1" colspan="3">check_settings_link</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/single/wp-admin/plugins.php?activate=true&amp;plugin_status=all&amp;paged=1&amp;s=</td>
+	<td>/single/wp-admin/</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Pages</td>
+	<td>link=Installed Plugins</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Isotope Visual Post Layouts</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>xpath=(//a[contains(text(),'Add New')])[4]</td>
+	<td>css=#isotope-visual-post-layouts &gt; td.plugin-title &gt; div.row-actions-visible &gt; span.0 &gt; a</td>
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>id=title-prompt-text</td>
+	<td>verifyTextNotPresent</td>
+	<td>You do not have sufficient permissions to access this page.</td>
 	<td></td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>id=title</td>
-	<td>testing 2</td>
-</tr>
-<tr>
-	<td>waitForTextPresent</td>
-	<td>[dbc_shortcode]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>id=publish</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=View page</td>
+	<td>verifyTextPresent</td>
+	<td>Isotope Visual Post Layouts</td>
 	<td></td>
 </tr>
 

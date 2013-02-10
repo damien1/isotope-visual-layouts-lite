@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/" />
+<title>add_page_with_shortcode</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">add_page_with_shortcode</td></tr>
+</thead><tbody>
+<tr>
+	<td>store</td>
+	<td>javascript{Math.floor(Math.random()*8)}</td>
+	<td>a</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>javascript{['London','Paris','Istanbul', 'Sydney', 'Brisbane', 'Auckland'][Math.floor(Math.random()*6)]}</td>
+	<td>tag</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>${a} ${tag}</td>
+	<td>page</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Pages</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Add New')])[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=title-prompt-text</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=title</td>
+	<td>${page}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=tinymce</td>
+	<td>[dbc_isotope posts=${a}]</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=publish</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=View page</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>id=wpadminbar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>${page}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextNotPresent</td>
+	<td>boo-Isotope settings not saved</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>[dbc_isotope posts=${a}]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>id=isocontent</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>css=div.box.box${colourvalue}</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
