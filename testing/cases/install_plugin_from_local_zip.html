@@ -22,8 +22,18 @@
 	<td>path</td>
 </tr>
 <tr>
+	<td>store</td>
+	<td>/Volumes/Proust/dropbox/</td>
+	<td>2path</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>xpath=id('menu-plugins')/x:a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextNotPresent</td>
+	<td>Isotope Visual Layouts lite</td>
 	<td></td>
 </tr>
 <tr>
@@ -57,6 +67,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertTextNotPresent</td>
+	<td>Plugin could not be activated because it triggered a fatal error.</td>
+	<td></td>
+</tr>
+<tr>
 	<td>open</td>
 	<td>http://single.local/wp-admin/plugins.php</td>
 	<td></td>
@@ -64,11 +79,6 @@
 <tr>
 	<td>verifyTextNotPresent</td>
 	<td>There is a new version of Isotope Visual Layouts Lite available</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextNotPresent</td>
-	<td>Plugin could not be activated because it triggered a fatal error.</td>
 	<td></td>
 </tr>
 </tbody></table>
