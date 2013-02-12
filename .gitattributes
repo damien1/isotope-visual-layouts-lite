@@ -7,3 +7,4 @@ readme.md export-ignore
 .DS_Store export-ignore
 isotope.json export-ignore
 /tests export-ignore
+/inc/plugin-update/debug*
