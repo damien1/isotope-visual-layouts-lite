@@ -4,7 +4,7 @@ Donate link:
 Tags: List Posts, Category List, List Custom Post, Isotope, Masonry, CSS, visual effect, animation, jquery, filter, HTML5
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 1.1
+Stable tag: 2.0
 
 Add stunning visual effects to your list of posts & custom post types using Isotope. Needs a responsive theme.
 
@@ -21,15 +21,26 @@ Just create a page or post and add the shortcode [dbc_isotope]
 **No coding and no theme to modify**
 This is not a theme and you don't need to know anything about HTML or CSS or coding. Just activate the plugin and create a new page (or post) this will save you hours of research on the Internet.
 
+##Want to add custom filtering for tags and categories?
+<a target="_blank" href="http://whitetshirtdigital.com/shop/visual-layouts-filtrify/?utm_source=WordPress&utm_medium=isotope-lite-installed&utm_campaign=Isotope-lite-filtrfiy">Visual Layouts Filtrify</a> - automatically adds tag and category based filtering to your Isotope post page.
+
+####Key Features
+* Includes jQuery plugin Filtrify
+* Adds tags & category filtering to your Wordpress
+* Extends / works with Isotope Visual Layouts 
+* Can easily work with Custom Taxonomies
+
+
+
 ##GET 30% off Isotope Pro plugin
-<a target="_blank" href="http://whitetshirtdigital.com/shop/isotope-for-wordpress-plugin-pro-licence/?utm_source=WordPress&utm_medium=isotope-lite-installed&utm_campaign=WordPress-Plugin-30OFF">Get 30% off a PRO licence</a> - enter ISOTOPE at the checkout.
+<a target="_blank" href="http://whitetshirtdigital.com/shop/isotope-for-wordpress-plugin-pro-licence/?utm_source=WordPress&utm_medium=isotope-lite-installed&utm_campaign=WordPress-Plugin-30OFF">Get 30% off a PRO Plugin</a> - enter ISOTOPE at the checkout.
 
 ####Key Features
 * Includes Infinite Scroll for pagination
 * Extra layout for photo galleries / portfolios
 * Support by e-mail 
 * Licence to change the CSS and HTML produced by the plugin.
-* Per Client or Per Developer licence - you are free to use on any project where you are the developer or the client.
+* Per Project / Client or Unlimited Developer licence.
 
 
 
@@ -75,15 +86,20 @@ Please remember that I paid for a licence so you can use this for free.
 
 Hmm it sounds like your theme has fixed widths. You need a responsive theme for the resize animation effect to work.
 
+
+
+
+
 == Screenshots ==
 
 1. Isotope Settings Page -- not much too it really just some helpful tips to get you started
 2. The finished page showing 10 recent posts. Resize your browser window to see them animate.
 
 == Changelog ==
-= 1.1 =
-* Saves special query to a transient cache for 5 mins
+= 2.0 =
+* Saves special query to a transient cache for 3 mins
 * Resolved - an issue where this plugin may have caused a conflict with other plugins
+* Minor change to using minified Isotope
 * This is now a Free Plugin - get the Pro Plugin for more features
 
 = 1.0 =

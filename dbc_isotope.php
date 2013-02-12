@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Isotope Visual Layouts lite
-Plugin URI: http://wordpress.damien.co/isotope?utm_source=WordPress&utm_medium=isotope&utm_campaign=Isotope-Layouts
+Plugin URI: http://wordpress.damien.co/isotope?utm_source=WordPress&utm_medium=isotope-lite&utm_campaign=Isotope-Layouts
 Description: Add visual effects to your list of posts & custom post types using Isotope. Needs a responsive theme   
-Version: 1.1
+Version: 2
 Author: Damien Saunders
-Author URI: http://damien.co/?utm_source=WordPress&utm_medium=isotope&utm_campaign=Isotope-Layouts
+Author URI: http://damien.co/?utm_source=WordPress&utm_medium=isotope-lite&utm_campaign=Isotope-Layouts
 License: This plugin GPLv3 - All changes to the HTML / CSS or Javascript do require a licence.
 */
 
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Globals
  */
-define ("ISOTOPE_LITE_VERSION", "1.1");
+define ("ISOTOPE_LITE_VERSION", "2");
 
 $plugin = plugin_basename(__FILE__); 
 
@@ -39,7 +39,7 @@ return $isotope_vpl_option;
  * visit http://w-shadow.com/blog/2010/09/02/automatic-updates-for-any-plugin/
  */
 
-require 'inc/plugin-update-checker.php';
+require 'inc/plugin-update/plugin-update-checker.php';
 $IsotopeUpdateChecker = new PluginUpdateChecker(
     'http://damien.co/lite-isotope.json',
     __FILE__,
@@ -51,7 +51,7 @@ $IsotopeUpdateChecker = new PluginUpdateChecker(
  * Enqueue isotope.js
  */
 function my_scripts_method() {
-	wp_enqueue_script('isotope', plugins_url('/js/jquery.isotope.js', __FILE__), array('jquery'));
+	wp_enqueue_script('isotope', plugins_url('/js/jquery.isotope.min.js', __FILE__), array('jquery'));
 }    
  
 add_action('wp_enqueue_scripts', 'my_scripts_method');
@@ -65,7 +65,6 @@ add_action( 'wp_enqueue_scripts', 'dbc_isotope_add_my_stylesheet' );
  * Enqueue plugin style-file
  */
 function dbc_isotope_add_my_stylesheet() {
-    // Respects SSL, Style.css is relative to the current file
     wp_register_style( 'dbc_isotope-style', plugins_url('css/custom_isotope.css', __FILE__) );
     wp_enqueue_style( 'dbc_isotope-style' );
 }
@@ -144,21 +143,21 @@ function dbc_isotope_shortcode_handler($atts) {
 		));
 		global $post, $blogid;
 		
+		
+		/**
+		 * adding Transient API and caching WP_query for 3 minutes	
+		 */	
 		$isotope_vpl_current_site ='';
 		$isotope_vpl_current_site = get_current_blog_id();
 		$isotope_vpl_current_site .='_isotope_query';
-		
-		
-		// Get any existing copy of our transient data
 		if ( false === ( $isotope_posts = get_transient( $isotope_vpl_current_site ) ) ) {
 			// It wasn't there, so regenerate the data and save the transient
 			$isotope_posts = get_posts($args);;
-			set_transient( $isotope_vpl_current_site, $isotope_posts );
+			set_transient( $isotope_vpl_current_site, $isotope_posts, 60*3 );
      }
 
 
 		
-	
         			
 		/**
 		 * depending on the option in the database to include featured images	
