@@ -1,0 +1,15 @@
+{
+    "name" : "Isotope Visual Layouts lite",
+    "slug" : "isotope-visual-layouts-lite",
+    "homepage" : "http://wordpress.damien.co/isotope/",
+    "download_url" : "http://whitetshirtdigital.co.uk/plugins/isotope-visual-post-layouts/isotope-visual-layouts-lite.zip",
+    "version" : "2",
+    "upgrade_notice" : "This is a mandatory change. Added WP Transient Caching to help improve performance and fixed a potentially major plugin conflict.",
+    "author" : "Damien Saunders",
+    "author_homepage" : "http://damien.co/",
+    "sections" : {
+        "description" : "Add visual effects to your list of posts & custom post types using Isotope. Needs a responsive theme.",
+		"installation_notes" : "Click install to download and automatically update to the new version.."
+    }
+        "downloaded" : 1000
+}
