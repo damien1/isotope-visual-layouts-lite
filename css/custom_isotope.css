@@ -6,9 +6,16 @@ Author: Damien Saunders
 
 /* Start: Damien's Isotope styles */
 
-#isocontent{}
+@font-face {
+  font-family: 'Special Elite';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Special Elite'), local('SpecialElite-Regular'), url(http://themes.googleusercontent.com/static/fonts/specialelite/v3/9-wW4zu3WNoD5Fjka35Jm4kaQb-UsZVONjobs91YQtw.woff) format('woff');
+}
 
-#isocontent .box{
+.isocontent{}
+
+.isocontent .box{
 position:relative; 
 max-width: 250px; 
 float:left; 
@@ -25,7 +32,7 @@ margin-left: 1px;
   font-size:14px;
 }
 
-#isocontent .boxYellow{
+.isocontent .Yellow{
 background-color:yellow;
 background-image:-webkit-linear-gradient(top, #FFEE90 0%, #FFE44E 100%);
   color:#000000;
@@ -35,7 +42,7 @@ background-image:-webkit-linear-gradient(top, #FFEE90 0%, #FFE44E 100%);
 
 
 
-#isocontent .boxViolet{position:relative; 
+.isocontent .Violet{position:relative; 
 float:left; 
 overflow: hidden; 
 position: relative;
@@ -51,7 +58,7 @@ background-image: radial-gradient(0% 0%, rgb(122, 129, 255), rgb(148, 55, 255));
   font-family: "special elite";
 }
 
-#isocontent .boxRed{
+.isocontent .Red{
 position:relative; 
 float:left; 
 overflow: hidden; 
@@ -70,7 +77,7 @@ background-image: radial-gradient(0% 0%, rgb(255, 38, 0), rgb(255, 47, 146));
 
 }
 
-#isocontent .boxGreen{
+.isocontent .Green{
 position:relative; 
 float:left; 
 overflow: hidden; 
@@ -89,7 +96,7 @@ background-image: radial-gradient(0% 0%, rgb(142, 250, 0), rgb(0, 251, 146));
 
 }
 
-#isocontent .boxBlue{
+.isocontent .Blue{
 position:relative; 
 float:left; 
 overflow: hidden; 
@@ -108,7 +115,7 @@ background-image: radial-gradient(100% 0%, rgb(0, 253, 255), rgb(0, 150, 255));
 
 }
 
-#isocontent .boxOrange{
+.isocontent .Orange{
 position:relative; 
 float:left; 
 overflow: hidden; 
@@ -127,7 +134,7 @@ background-image: radial-gradient(100% 0%, rgb(255, 126, 121), rgb(255, 147, 0))
 
 }
 
-#isocontent .boxWhite{
+.isocontent .White{
 position:relative; 
 float:left; 
 overflow: hidden; 
@@ -148,17 +155,17 @@ background-image: radial-gradient(100% 0%, rgb(255, 255, 255), rgb(235, 235, 235
 
 
 
-#isocontent .wp-post-image{
+.isocontent .wp-post-image{
 	display:block;
 	margin:auto;
    }
 
-#isocontent a{
+.isocontent a{
 	text-decoration: none;
 	color:#000000;
   }
 
-#isocontent .ftext{
+.isocontent .ftext{
 	background-color: white;
 	padding-bottom:3px;
 	padding-left:3px;

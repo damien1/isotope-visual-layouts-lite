@@ -31,6 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			<div class="postbox">
 				<h3><span>Help & Support</span></h3>
 				<div class="inside">
+					<?php echo 'Thank you for using version ' . ISOTOPE_LITE_VERSION; ?>
 					<ul>
 					<li><a target="_blank" href="http://wordpress.damien.co/isotope/?utm_source=WordPress&utm_medium=dbc-isotope-lite-installed&utm_campaign=Isotope-Layouts">Help & FAQ's</a></li>
 					<li><a target="_blank" href="http://wordpress.damien.co/?utm_source=WordPress&utm_medium=dbc-isotope-lite-installed&utm_campaign=Isotope-Layouts">More WordPress Tips & Ideas</a></li>

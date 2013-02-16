@@ -130,9 +130,9 @@ function dbc_isotope_shortcode_handler($atts) {
 	 $isotope_vpl_option = isotope_vpl_get_global_options();
 	 $isotope_vpl_style = $isotope_vpl_option["dropdown1"];
 	 $isotope_vpl_images = $isotope_vpl_option["dropdown2"];
-
+	 $isotope_vpl_return ='<!-- Isotope for WordPress by Damien http://wordpress.damien.co/isotope  -->'.$damien_filtrify_placeholder;
 	 ?>
-	<!-- Isotope Visual Layouts Lite for WordPress by Damien http://wordpress.damien.co/isotope  -->
+	
 	<?php 
 		$args = (array(
 		'post_type' => $ds_posttype,
@@ -142,7 +142,7 @@ function dbc_isotope_shortcode_handler($atts) {
 		'numberposts' => $posts
 		));
 		global $post, $blogid;
-		
+		global $damien_filtrify, $damien_filtrify_placeholder;
 		
 		/**
 		 * adding Transient API and caching WP_query for 3 minutes	
@@ -157,46 +157,101 @@ function dbc_isotope_shortcode_handler($atts) {
      }
 
 
-		
-        			
-		/**
-		 * depending on the option in the database to include featured images	
-		 */			
-		switch ($isotope_vpl_images) {
-		case 'Image Only'; // try this with a photoblog or custom post type
-		$isotope_vpl_return='<div id="isocontent">';			
-		foreach( $isotope_posts as $post ) :	setup_postdata($post);
-		$isotope_vpl_return .= '<div class="box box'.$isotope_vpl_style.'"><a href="'.get_permalink().'">'.get_the_post_thumbnail($id, 'thumbnail', array('class' => 'dsimage')).'</a></div>';
-		endforeach;
-		$isotope_vpl_return.='</div>';
-		// return the output
-		return $isotope_vpl_return;
+	$isotope_posts = new wp_query($args);
+
+	if
+	($isotope_posts->have_posts())
+		$isotope_vpl_return .= $damien_fixed_filter;
+
+	$isotope_vpl_return ='<!-- Isotope for WordPress by Damien http://wordpress.damien.co/isotope  -->'.$damien_filtrify_placeholder;
+	$isotope_vpl_return .= $damien_fixed_filter;
+	$isotope_vpl_return .= '<ul class="isocontent">';
+	while
+	($isotope_posts->have_posts()) : $isotope_posts->the_post();
+	//@TODO clean-up variable names to make them safe
+	$meta = get_post_meta( $id, '_size', true );
+	if
+	($meta != '')
+	{
+		$thumbv = $meta;
+	}
+	else($thumbv ='thumbnail');
+	$cus_colour = $thumbv.' box '.$isotope_vpl_style.' ';
+	$cat_class = implode(', ', wp_get_post_categories( get_the_ID(), array('fields' => 'names') ) );
+	$tag_classes = implode(', ', wp_get_post_tags( get_the_ID(), array('fields' => 'names') ) );
+	
+	$feat_excerpt = '';
+	
+	if
+	($ds_extract == 'on')
+	{
+		$feat_excerpt = '<div class="fexc">'.get_the_excerpt().'</div>';
+	}
+	else ($feat_excerpt = '');	
+	
+	$feat_filtrify ='';
+	if
+	($damien_filtrify == true)
+	{
+		$feat_filtrify ='data-tag="'.$tag_classes. '" data-category="'.$cat_class.'"';
+	}
+
+	//$meta ='thumbnail';
+	switch ($isotope_vpl_images)
+	{
+	case 'Image Only'; // try this with a photoblog or custom post type
+		$feat_excerpt ='';
+		$feat_title ='';
+		$feat_image = get_the_post_thumbnail($id, $thumbv);
 		break;
-		
-		case 'Image with Text'; // the default option
-		$isotope_vpl_return='<div id="isocontent">';			
-		foreach( $isotope_posts as $post ) :	setup_postdata($post);
-		$isotope_vpl_return .= '<div class="box box'.$isotope_vpl_style.'"><a href="'.get_permalink().'">'.get_the_post_thumbnail($id, 'thumbnail', array('class' => 'dsimage')).'<div class="ftext">'.get_the_title().'</div></a></div>';
-		endforeach;
-		$isotope_vpl_return.='</div>';
-		// return the output
-		return $isotope_vpl_return;
+
+	case 'Image with Text'; // the default option
+		$feat_title = '<div class="ftext">'.get_the_title().'</div>';
+		$feat_image = get_the_post_thumbnail($id, $thumbv);
+		$feat_excerpt;
 		break;
-		
-		case 'Text Only'; // No Image
-		$isotope_vpl_return='<div id="isocontent">';			
-		foreach( $isotope_posts as $post ) :	setup_postdata($post);
-		$isotope_vpl_return .= '<div class="box box'.$isotope_vpl_style.'"><a href="'.get_permalink().'"><div class="ftext">'.get_the_title().'</a></div></div>';
-		endforeach;
-		$isotope_vpl_return.='</div>';
-		// return the output
-		return $isotope_vpl_return;
+
+	case 'Text Only'; // No Image
+		$feat_title = '<div class="ftext">'.get_the_title().'</div>';
+		$feat_image = '';
+		$feat_excerpt;
 		break;
-		
-		}	
-	}	
-			
-			
+
+	}
+
+
+
+	//@TODO clean-up variable names to make them safe
+	$isotope_vpl_return .='<li class="'. implode(' ', get_post_class($cus_colour, $post->ID)).'"';
+	$isotope_vpl_return .= $feat_filtrify;
+	$isotope_vpl_return .='>';
+	//$isotope_vpl_return .='<a href="'.get_permalink().'">';
+	$isotope_vpl_return .= $feat_title;
+	$isotope_vpl_return .= '<div class="image">'.$feat_image.'</div>';
+
+	//$isotope_vpl_return .= $feat_title . '</div>';
+	$isotope_vpl_return .= $feat_excerpt;
+	$isotope_vpl_return .= '</li>';
+	//$isotope_vpl_return .= '</a>';
+	endwhile;
+	$isotope_vpl_return .='</ul>';
+	wp_reset_query();
+	return $isotope_vpl_return;
+
+	$wp_query = null;
+	$wp_query = $temp;
+
+
+	//var_dump($isotope_posts);
+
+
+
+
+
+
+}
+
+add_shortcode('dbc_isotope', 'dbc_isotope_shortcode_handler');		
 			
 			
 			
