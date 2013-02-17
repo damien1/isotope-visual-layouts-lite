@@ -1,0 +1,3 @@
+[submodule "testing"]
+	path = testing
+	url = git@bitbucket.org:damien1/testing.git
