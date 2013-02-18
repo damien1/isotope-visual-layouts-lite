@@ -20,6 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 define ("ISOTOPE_LITE_VERSION", "2");
 
 $plugin = plugin_basename(__FILE__); 
+//$damien_filtrify = true;
+
+
 
 /**
  * isotope_vpl_get_global_options function.
@@ -127,6 +130,7 @@ function dbc_isotope_shortcode_handler($atts) {
 	  * @var mixed
 	  * @access public
 	  */
+	  global $damien_filtrify, $damien_filtrify_placeholder;
 	 $isotope_vpl_option = isotope_vpl_get_global_options();
 	 $isotope_vpl_style = $isotope_vpl_option["dropdown1"];
 	 $isotope_vpl_images = $isotope_vpl_option["dropdown2"];
@@ -141,7 +145,7 @@ function dbc_isotope_shortcode_handler($atts) {
 		'cat' => $ds_cats2, 
 		'numberposts' => $posts
 		));
-		global $post, $blogid;
+		global $id, $post, $blogid;
 		global $damien_filtrify, $damien_filtrify_placeholder;
 		
 		/**
@@ -156,15 +160,11 @@ function dbc_isotope_shortcode_handler($atts) {
 			set_transient( $isotope_vpl_current_site, $isotope_posts, 60*3 );
      }
 
-
 	$isotope_posts = new wp_query($args);
 
 	if
 	($isotope_posts->have_posts())
-		$isotope_vpl_return .= $damien_fixed_filter;
-
 	$isotope_vpl_return ='<!-- Isotope for WordPress by Damien http://wordpress.damien.co/isotope  -->'.$damien_filtrify_placeholder;
-	$isotope_vpl_return .= $damien_fixed_filter;
 	$isotope_vpl_return .= '<ul class="isocontent">';
 	while
 	($isotope_posts->have_posts()) : $isotope_posts->the_post();
@@ -181,14 +181,7 @@ function dbc_isotope_shortcode_handler($atts) {
 	$tag_classes = implode(', ', wp_get_post_tags( get_the_ID(), array('fields' => 'names') ) );
 	
 	$feat_excerpt = '';
-	
-	if
-	($ds_extract == 'on')
-	{
-		$feat_excerpt = '<div class="fexc">'.get_the_excerpt().'</div>';
-	}
-	else ($feat_excerpt = '');	
-	
+		
 	$feat_filtrify ='';
 	if
 	($damien_filtrify == true)
