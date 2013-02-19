@@ -12,7 +12,7 @@
     "author_homepage" : "http://damien.co/",
     "sections" : {
         "description" : "Add visual effects to your list of posts & custom post types using Isotope. Needs a responsive theme.",
-		"installation_notes" : "Click install to download and automatically update to the new version.."
+		"installation_notes" : "Click install to download and automatically update to the new version..",
 		"changelog" : "(Recommended) Changelog. <p>This section will be opened by default when the user clicks 'View version XYZ information'.</p><ul><li>2.0 - Added WP Query Transient Cache and fixed potential plugin conflict</li><li>1.0 - First Release</li></ul>",
     }
         "downloaded" : 1000
