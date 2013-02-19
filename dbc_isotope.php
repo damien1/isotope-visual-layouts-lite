@@ -180,6 +180,8 @@ function dbc_isotope_shortcode_handler($atts) {
 	$cat_class = implode(', ', wp_get_post_categories( get_the_ID(), array('fields' => 'names') ) );
 	$tag_classes = implode(', ', wp_get_post_tags( get_the_ID(), array('fields' => 'names') ) );
 	
+	$data_attrib ='';
+	$data_attrib = 'data-pubDate="'.get_the_date('Y-m-d H:i:s').'"';
 	$feat_excerpt = '';
 		
 	$feat_filtrify ='';
@@ -217,6 +219,7 @@ function dbc_isotope_shortcode_handler($atts) {
 	//@TODO clean-up variable names to make them safe
 	$isotope_vpl_return .='<li class="'. implode(' ', get_post_class($cus_colour, $post->ID)).'"';
 	$isotope_vpl_return .= $feat_filtrify;
+	$isotope_vpl_return .= $data_attrib;
 	$isotope_vpl_return .='>';
 	//$isotope_vpl_return .='<a href="'.get_permalink().'">';
 	$isotope_vpl_return .= $feat_title;
