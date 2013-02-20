@@ -115,12 +115,14 @@ function dbc_isotope_shortcode_handler($atts) {
       'posts' => 10,
       'cats' => '',
       'order' => 'DESC',
-      'post_type' => ''
+      'post_type' => '',
+      'filtrify' => 'on',
       ), 
      $atts));
 	 $ds_cats2 = $cats;
 	 $ds_posttype = $post_type;
 	 $ds_order = $order;
+	 $ds_filtrify = $filtrify;
 	 
 	 /**
 	  * isotope_vpl_option
@@ -130,7 +132,7 @@ function dbc_isotope_shortcode_handler($atts) {
 	  * @var mixed
 	  * @access public
 	  */
-	  global $damien_filtrify, $damien_filtrify_placeholder;
+	  global $damien_filtrify_placeholder;
 	 $isotope_vpl_option = isotope_vpl_get_global_options();
 	 $isotope_vpl_style = $isotope_vpl_option["dropdown1"];
 	 $isotope_vpl_images = $isotope_vpl_option["dropdown2"];
@@ -146,7 +148,7 @@ function dbc_isotope_shortcode_handler($atts) {
 		'numberposts' => $posts
 		));
 		global $id, $post, $blogid;
-		global $damien_filtrify, $damien_filtrify_placeholder;
+ //		global $damien_filtrify, $damien_filtrify_placeholder;
 		
 		/**
 		 * adding Transient API and caching WP_query for 3 minutes	
@@ -181,14 +183,15 @@ function dbc_isotope_shortcode_handler($atts) {
 	$tag_classes = implode(', ', wp_get_post_tags( get_the_ID(), array('fields' => 'names') ) );
 	
 	$data_attrib ='';
-	$data_attrib = 'data-pubDate="'.get_the_date('Y-m-d H:i:s').'"';
 	$feat_excerpt = '';
 		
 	$feat_filtrify ='';
 	if
-	($damien_filtrify == true)
+	($ds_filtrify =='on')
 	{
 		$feat_filtrify ='data-tag="'.$tag_classes. '" data-category="'.$cat_class.'"';
+		$data_attrib = 'data-pubDate="'.get_the_date('Y-m-d H:i:s').'"';
+
 	}
 
 	//$meta ='thumbnail';
