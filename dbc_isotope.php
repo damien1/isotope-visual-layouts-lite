@@ -54,7 +54,7 @@ $IsotopeUpdateChecker = new PluginUpdateChecker(
  * Enqueue isotope.js
  */
 function vpl_scripts_method() {
-	wp_enqueue_script('isotope', plugins_url('/js/jquery.isotope.min.js', __FILE__), array('jquery'));
+	wp_enqueue_script('isotope', plugins_url('/js/jquery.isotope.min.js', __FILE__), array('jquery'), true, true);
 }    
  
 add_action('wp_enqueue_scripts', 'vpl_scripts_method');
