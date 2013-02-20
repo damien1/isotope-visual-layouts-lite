@@ -224,14 +224,15 @@ function dbc_isotope_shortcode_handler($atts) {
 	$isotope_vpl_return .= $feat_filtrify;
 	$isotope_vpl_return .= $data_attrib;
 	$isotope_vpl_return .='>';
-	//$isotope_vpl_return .='<a href="'.get_permalink().'">';
+	$isotope_vpl_return .='<a href="'.get_permalink().'">';
 	$isotope_vpl_return .= $feat_title;
+	$isotope_vpl_return .= '</a>';
 	$isotope_vpl_return .= '<div class="image">'.$feat_image.'</div>';
 
 	//$isotope_vpl_return .= $feat_title . '</div>';
 	$isotope_vpl_return .= $feat_excerpt;
 	$isotope_vpl_return .= '</li>';
-	//$isotope_vpl_return .= '</a>';
+
 	endwhile;
 	$isotope_vpl_return .='</ul>';
 	wp_reset_query();
