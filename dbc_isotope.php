@@ -184,13 +184,13 @@ function dbc_isotope_shortcode_handler($atts) {
 	
 	$data_attrib ='';
 	$feat_excerpt = '';
-		
+				$data_attrib = 'data-pubDate="'.get_the_date('Y-m-d H:i:s').'"';
 	$feat_filtrify ='';
 	if
 	($ds_filtrify =='on')
 	{
 		$feat_filtrify ='data-tag="'.$tag_classes. '" data-category="'.$cat_class.'"';
-		$data_attrib = 'data-pubDate="'.get_the_date('Y-m-d H:i:s').'"';
+
 
 	}
 
