@@ -6,14 +6,14 @@
     "version" : "2",
     "requires" : "3.3",
     "tested" : "3.5.1",
-    "last_updated" : "2012-10-29 11:09:00",
-    "upgrade_notice" : "This is a mandatory change. Added WP Transient Caching to help improve performance and fixed a potentially major plugin conflict.",
+    "last_updated" : "2013-02-21 17:12:00",
+    "upgrade_notice" : "Added WP Caching which helps improve performance, fixed a potentially major plugin conflict and rewrote WP_query.",
     "author" : "Damien Saunders",
     "author_homepage" : "http://damien.co/",
     "sections" : {
         "description" : "Add visual effects to your list of posts & custom post types using Isotope. Needs a responsive theme.",
 		"installation_notes" : "Click install to download and automatically update to the new version..",
-		"changelog" : "(Recommended) Changelog. <p>This section will be opened by default when the user clicks 'View version XYZ information'.</p><ul><li>2.0 - Added WP Query Transient Cache and fixed potential plugin conflict</li><li>1.0 - First Release</li></ul>",
-    }
+		"changelog" : "Changelog. <p>This section list's what's changed.</p><ul><li>2.0 <ul><Li>Added WP Query Transient Cache</li><li>Fixed potential plugin conflict</li><li>Rewrote Query as WP_Query was Get Posts</li></ul<li>1.0 - First Release. 7 Colour themes and 3 styles</li></ul>"
+    },
         "downloaded" : 1000
 }
