@@ -22,10 +22,10 @@ class PluginUpdateChecker_1_3 {
 	public $metadataUrl = ''; //The URL of the plugin's metadata file.
 	public $pluginFile = '';  //Plugin filename relative to the plugins directory.
 	public $slug = '';        //Plugin slug.
-	public $checkPeriod = 1; //How often to check for updates (in hours).
+	public $checkPeriod = 12; //How often to check for updates (in hours).
 	public $optionName = 'isotope-lite';  //Where to store the update info.
 
-	public $debugMode = true; //Set to TRUE to enable error reporting. Errors are raised using trigger_error()
+	public $debugMode = false; //Set to TRUE to enable error reporting. Errors are raised using trigger_error()
                                //and should be logged to the standard PHP error log.
 
 	private $cronHook = null;
