@@ -10,7 +10,7 @@ Requires at least: 3.3
 
 Tested up to: 3.5.1
 
-Stable tag: 2.0
+Stable tag: 2.1
 
 **Add stunning visual effects to your list of posts & custom post types using Isotope. Needs a responsive theme.**
 
@@ -109,6 +109,10 @@ Hmm it sounds like your theme has fixed widths. You need a responsive theme for 
 2. The finished page showing 10 recent posts. Resize your browser window to see them animate.
 
 ### Changelog 
+
+= 2.1 =
+
+FIXED - posts_per_page bug causing only to display 10 posts
 
 = 2.0 =
 

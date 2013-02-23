@@ -145,7 +145,7 @@ function dbc_isotope_shortcode_handler($atts) {
 		'orderby' => 'date', 
 		'order' => $ds_order, 
 		'cat' => $ds_cats2, 
-		'numberposts' => $posts
+		'posts_per_page' => $posts
 		));
 		global $id, $post, $blogid;
  //		global $damien_filtrify, $damien_filtrify_placeholder;
