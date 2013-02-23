@@ -1,9 +1,27 @@
-<!-- damien was here - if you change this please help me and MetaFizzy by buying a commercial licence -->					
-	<script type="text/javascript">
-    jQuery(document).ready(function($){
-	    var container = $(".isocontent");
-        container.isotope({
-        itemSelector : '.box',
-        layoutMode : 'fitRows'
+/**
+ * Damien's theme jQuery.
+ */
+ 
+   
+   $j = jQuery.noConflict(); 
+   
+    $j(document).ready(function(){
+    
+      var mycontainer = $j('ul.isocontent');
+      mycontainer.imagesLoaded( function(){
+     	 mycontainer.isotope({
+	     	itemSelector: 'li.box',
+	     	masonry : {
+          columnWidth : 150
+        }
+	     	});
     });
-   </script>
+    
+    // filter items when filter link is clicked
+	$j('#options a').click(function(){
+	  var selector = $j(this).attr('data-filter');
+	  mycontainer.isotope({ filter: selector });
+	  return false;  
+	  });
+	  
+	});

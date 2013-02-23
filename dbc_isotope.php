@@ -55,6 +55,8 @@ $IsotopeUpdateChecker = new PluginUpdateChecker(
  */
 function vpl_scripts_method() {
 	wp_enqueue_script('isotope', plugins_url('/js/jquery.isotope.min.js', __FILE__), array('jquery'), true, true);
+	wp_enqueue_script('isotope_myfile', plugins_url('/inc/myfile.js', __FILE__), array('isotope'), true, true);
+	
 }    
  
 add_action('wp_enqueue_scripts', 'vpl_scripts_method');
@@ -254,27 +256,7 @@ function dbc_isotope_shortcode_handler($atts) {
 add_shortcode('dbc_isotope', 'dbc_isotope_shortcode_handler');		
 			
 			
-			
 
-/**
- * isotope_vpl_set_style function.
- * Am I Isotope or Filtered?
- *
- * @access public
- * @return void
- */
-
-
-function isotope_vpl_set_style() {
-$style = (get_option('damien_style'));
-if	($style == "isotope"){
-		include("inc/myfile.js");
-		}
-else {
-	echo "boo-Isotope settings not saved";}
-	}
-
-add_action('wp_footer','isotope_vpl_set_style',10);
 
 /**
  * Register Activation Hook called on Plugin Init.
