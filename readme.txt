@@ -109,6 +109,11 @@ Hmm it sounds like your theme has fixed widths. You need a responsive theme for 
 
 ### Changelog 
 
+= 2.2 =
+
+Changed the way the Isotope script is called
+
+
 = 2.1 =
 
 FIXED - posts_per_page bug causing only to display 10 posts
