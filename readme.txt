@@ -10,7 +10,7 @@ Requires at least: 3.3
 
 Tested up to: 3.5.1
 
-Stable tag: 2.1
+Stable tag: 2.2
 
 Add stunning visual effects to your list of posts & custom post types using Isotope. Needs a responsive theme.
 
