@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 <div class="wrap">
 	<div id="icon-options-general" class="icon32"></div>
 	<h2>Isotope Visual Layouts Lite</h2>
-	
+	<?php settings_errors();?>
 	<div class="metabox-holder has-right-sidebar">
 		
 <div class="inner-sidebar">
