@@ -99,7 +99,7 @@
 </target>
 
 <target name="readme">
-
+    <echo message="Generating update file ..." level="info"/>
     <copy todir="${build.dir}/${plugin.name}">
         <fileset dir="."/>
         <globmapper from="readme.md" to="readme.txt"/>
