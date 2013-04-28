@@ -1,0 +1,6 @@
+[submodule "js/packery"]
+	path = js/packery
+	url = https://damien1@github.com/metafizzy/packery.git
+[submodule "testing"]
+	path = testing
+	url = https://damien1@bitbucket.org/damien1/testing.git
