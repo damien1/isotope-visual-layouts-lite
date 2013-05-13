@@ -3,22 +3,35 @@
 Plugin Name: DBC Backup 2
 Plugin URI: http://wordpress.damien.co/plugins?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin
 Description: Safe & easy backup for your WordPress database. Just schedule and forget.
-Version: 2.1.1
+Version: 2.2a
 Author: Damien Saunders
-Author URI: http://damien.co/?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin
+Author URI: http://damien.co/?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin&utm_keyword=php
 License: GPLv2 or later
 */
 
+/**
+ * You shouldn't be here. ..
+ */
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+/**
+ * Variables
+ */
+define("DBCBACKUP2VERSION", "2.2");
+$uploads = wp_upload_dir();
+
+
+
 /*
  * Save User Options to WPDB
  */	
-add_action('activate_dbcbackup/dbcbackup.php', 'dbcbackup_install');
-function dbcbackup_install() 
+
+function dbcbackup_install()
 {
 	$options = array('export_dir' => '', 'compression' => 'none', 'gzip_lvl' => 0, 'period' => 86400,  'schedule' => time(), 'active' => 0, 'rotate' => -1);
 	add_option('dbcbackup_options', $options, '', 'no');
 }
+add_action('activate_dbcbackup/dbcbackup.php', 'dbcbackup_install');
 
 /*
  * Uninstall function
@@ -31,6 +44,8 @@ function dbcbackup_uninstall()
 register_deactivation_hook(__FILE__, 'dbcbackup_uninstall');
 
 add_action('dbc_backup', 'dbcbackup_run');
+
+
 function dbcbackup_run($mode = 'auto')
 {
 	if(defined('DBC_BACKUP_RETURN')) return;
@@ -99,12 +114,13 @@ function dbcbackup_menu()
 /*
  * Add WP-Cron Job
  */
-add_filter('cron_schedules', 'dbcbackup_interval');
+
 function dbcbackup_interval() {
 	$cfg = get_option('dbcbackup_options');
 	$cfg['period'] = ($cfg['period'] == 0) ? 86400 : $cfg['period'];
 	return array('dbc_backup' => array('interval' => $cfg['period'], 'display' => __('DBC Backup Interval', 'dbc_backup')));
 }
+add_filter('cron_schedules', 'dbcbackup_interval');
 
 /*
  * 2.1 Add settings link on Installed Plugin page
