@@ -49,14 +49,14 @@ add_action('dbc_backup', 'dbcbackup_run');
 function dbcbackup_run($mode = 'auto')
 {
 	if(defined('DBC_BACKUP_RETURN')) return;
-	$cfg = get_option('dbcbackup_options'); 
-	if(!$cfg['active'] AND $mode == 'auto') return;
-	if(empty($cfg['export_dir'])) return;
+	$damien_cfg = get_option('dbcbackup_options');
+	if(!$damien_cfg['active'] AND $mode == 'auto') return;
+	if(empty($damien_cfg['export_dir'])) return;
 	if($mode == 'auto')	dbcbackup_locale();
 	
 	require_once ('inc/functions.php');
-	define('DBC_COMPRESSION', $cfg['compression']);
-	define('DBC_GZIP_LVL', $cfg['gzip_lvl']);
+	define('DBC_COMPRESSION', $damien_cfg['compression']);
+	define('DBC_GZIP_LVL', $damien_cfg['gzip_lvl']);
 	define('DBC_BACKUP_RETURN', true);
 	
 	$timenow 			= 	time();
@@ -64,11 +64,11 @@ function dbcbackup_run($mode = 'auto')
 	$time_start 		= 	$mtime[1] + $mtime[0];
 	$key 				= 	substr(md5(md5(DB_NAME.'|'.microtime())), 0, 6);
 	$date 				= 	date('m.d.y-H.i.s', $timenow);
-	list($file, $fp) 	=	dbcbackup_open($cfg['export_dir'].'/Backup_'.$date.'_'.$key);
+	list($file, $fp) 	=	dbcbackup_open($damien_cfg['export_dir'].'/Backup_'.$date.'_'.$key);
 	
 	if($file)
 	{
-		$removed = dbcbackup_rotate($cfg, $timenow);
+		$removed = dbcbackup_rotate($damien_cfg, $timenow);
 		@set_time_limit(0);
 		$sql = mysql_query("SHOW TABLE STATUS FROM ".DB_NAME);
 		dbcbackup_write($file, dbcbackup_header());
@@ -87,9 +87,9 @@ function dbcbackup_run($mode = 'auto')
 	$mtime 			= 	explode(' ', microtime());
 	$time_end 		= 	$mtime[1] + $mtime[0];
 	$time_total 	= 	$time_end - $time_start;
-	$cfg['logs'][] 	= 	array ('file' => $fp, 'size' => @filesize($fp), 'started' => $timenow, 'took' => $time_total, 'status'	=> $result, 'removed' => $removed);					
-	update_option('dbcbackup_options', $cfg);
-	return ($mode == 'auto' ? true : $cfg['logs']);
+	$damien_cfg['logs'][] 	= 	array ('file' => $fp, 'size' => @filesize($fp), 'started' => $timenow, 'took' => $time_total, 'status'	=> $result, 'removed' => $removed);
+	update_option('dbcbackup_options', $damien_cfg);
+	return ($mode == 'auto' ? true : $damien_cfg['logs']);
 }
 /*
  * i18n -- I need to local at the POT stuff for v2.2
@@ -116,9 +116,9 @@ function dbcbackup_menu()
  */
 
 function dbcbackup_interval() {
-	$cfg = get_option('dbcbackup_options');
-	$cfg['period'] = ($cfg['period'] == 0) ? 86400 : $cfg['period'];
-	return array('dbc_backup' => array('interval' => $cfg['period'], 'display' => __('DBC Backup Interval', 'dbc_backup')));
+	$damien_cfg = get_option('dbcbackup_options');
+	$damien_cfg['period'] = ($damien_cfg['period'] == 0) ? 86400 : $damien_cfg['period'];
+	return array('dbc_backup' => array('interval' => $damien_cfg['period'], 'display' => __('DBC Backup Interval', 'dbc_backup')));
 }
 add_filter('cron_schedules', 'dbcbackup_interval');
 

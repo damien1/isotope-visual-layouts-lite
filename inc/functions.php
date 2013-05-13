@@ -281,13 +281,13 @@ function dbcbackup_close($fp)
 
 /* ------------------ */
 
-function dbcbackup_rotate($cfg, $timenow)
+function dbcbackup_rotate($damien_cfg, $timenow)
 {
 	$removed = 0;
-	if($cfg['rotate'] >= 0)
+	if($damien_cfg['rotate'] >= 0)
 	{
-		$compare = 86400 * $cfg['rotate'];
-		if ($handle = opendir($cfg['export_dir'])) 
+		$compare = 86400 * $damien_cfg['rotate'];
+		if ($handle = opendir($damien_cfg['export_dir']))
 		{
 			$dump_formats = array('gz', 'sql', 'bz2');
 			while (false !== ($file = readdir($handle))) 
@@ -302,7 +302,7 @@ function dbcbackup_rotate($cfg, $timenow)
 
 					if($timenow > $generated + $compare)
 					{
-						if(@unlink($cfg['export_dir'].'/'.$file))
+						if(@unlink($damien_cfg['export_dir'].'/'.$file))
 						{
 							$removed++;
 						}
