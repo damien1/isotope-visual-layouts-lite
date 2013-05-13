@@ -7,23 +7,25 @@ Author: Damien Saunders
 Author URI: http://damien.co/?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin
 License: GPLv2 or later
 */
+
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 if(!defined('WP_ADMIN') OR !current_user_can('manage_options')) wp_die(__('You do not have sufficient permissions to access this page.'));
 
-dbcbackup_locale();
+// dbcbackup_locale();
 $cfg = get_option('dbcbackup_options'); 
-if($_POST['quickdo'] == 'dbc_logerase')
+if(isset($_POST['quickdo']) == 'dbc_logerase')
 {
 	check_admin_referer('dbc_quickdo');
 	$cfg['logs'] = array();
 	update_option('dbcbackup_options', $cfg);
 }
-elseif($_POST['quickdo'] == 'dbc_backupnow')
+elseif(isset($_POST['quickdo']) == 'dbc_backupnow')
 {
 	check_admin_referer('dbc_quickdo');
 	$cfg['logs'] = dbcbackup_run('backupnow');
 }
-elseif($_POST['do'] == 'dbc_setup')
+elseif(isset($_POST['do']) == 'dbc_setup')
 {
 	check_admin_referer('dbc_options');
 	$temp['export_dir']		=	rtrim(stripslashes_deep(trim($_POST['export_dir'])), '/');
