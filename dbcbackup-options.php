@@ -10,7 +10,7 @@ License: GPLv2 or later
 if ( ! defined( 'ABSPATH' ) ) exit;
 if(!defined('WP_ADMIN') OR !current_user_can('manage_options')) wp_die(__('You do not have sufficient permissions to access this page.'));
 
-dbcbackup_locale();
+// dbcbackup_locale();
 $cfg = get_option('dbcbackup_options'); 
 if($_POST['quickdo'] == 'dbc_logerase')
 {
