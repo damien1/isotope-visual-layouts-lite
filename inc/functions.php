@@ -141,9 +141,9 @@ function dbcbackup_backquote($a_name)
 
 function dbcbackup_header()
 {
-	$header  = "-- Database Cron Backup \n";
-	$header .= "-- Version 1.0 for Wordpress 2.5+ \n";
-	$header .= "-- Copyright Chris T aka Tefra http://www.t3-design.com \n";
+	$header  = "-- DBC Backup 2 \n";
+	$header .= "-- Version 2.2 for Wordpress 2.5+ \n";
+	$header .= "-- Copyright Damien Saunders http://damien.co \n";
 	$header .= "-- Generated: ".date('l dS \of F Y h:i A', time() + (get_option('gmt_offset') * 3600))." \n";
 	$header .= "-- MySQL Server: ".mysql_get_host_info()."\n";
 	$header .= "-- MySQL Server version: ".mysql_get_server_info()."\n";
