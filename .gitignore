@@ -1,3 +1,10 @@
+#intellij idea files to ignore
+.iws
+workspace.xml
+tasks.xml
+
+#svn files to ignore
 .svn
+
 .DS_Store
 tags/
