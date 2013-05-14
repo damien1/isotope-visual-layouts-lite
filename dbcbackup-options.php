@@ -7,25 +7,23 @@ Author: Damien Saunders
 Author URI: http://damien.co/?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin
 License: GPLv2 or later
 */
-
-
 if ( ! defined( 'ABSPATH' ) ) exit;
 if(!defined('WP_ADMIN') OR !current_user_can('manage_options')) wp_die(__('You do not have sufficient permissions to access this page.'));
 
-// dbcbackup_locale();
-$damien_cfg = get_option('dbcbackup_options');
-if(isset($_POST['quickdo']) == 'dbc_logerase')
+dbcbackup_locale();
+$cfg = get_option('dbcbackup_options'); 
+if($_POST['quickdo'] == 'dbc_logerase')
 {
 	check_admin_referer('dbc_quickdo');
-	$damien_cfg['logs'] = array();
-	update_option('dbcbackup_options', $damien_cfg);
+	$cfg['logs'] = array();
+	update_option('dbcbackup_options', $cfg);
 }
-elseif(isset($_POST['quickdo']) == 'dbc_backupnow')
+elseif($_POST['quickdo'] == 'dbc_backupnow')
 {
 	check_admin_referer('dbc_quickdo');
-	$damien_cfg['logs'] = dbcbackup_run('backupnow');
+	$cfg['logs'] = dbcbackup_run('backupnow');
 }
-elseif(isset($_POST['do']) == 'dbc_setup')
+elseif($_POST['do'] == 'dbc_setup')
 {
 	check_admin_referer('dbc_options');
 	$temp['export_dir']		=	rtrim(stripslashes_deep(trim($_POST['export_dir'])), '/');
@@ -34,7 +32,7 @@ elseif(isset($_POST['do']) == 'dbc_setup')
 	$temp['period']			=	intval($_POST['severy']) * intval($_POST['speriod']);
 	$temp['active']			=	(bool)$_POST['active'];
 	$temp['rotate']			=	intval($_POST['rotate']);
-	$temp['logs']			=	$damien_cfg['logs'];
+	$temp['logs']			=	$cfg['logs'];
 	
 	$timenow 				= 	time();
 	$year 					= 	date('Y', $timenow);
@@ -46,49 +44,49 @@ elseif(isset($_POST['do']) == 'dbc_setup')
 	$temp['schedule'] 		= 	mktime($hours, $minutes, $seconds, $month, $day, $year);
 	update_option('dbcbackup_options', $temp);
 
-	if($damien_cfg['active'] AND !$temp['active']) $clear = true;
-	if(!$damien_cfg['active'] AND $temp['active']) $schedule = true;
-	if($damien_cfg['active'] AND $temp['active'] AND (array($hours, $minutes, $seconds) != explode('-', date('G-i-s', $damien_cfg['schedule'])) OR $temp['period'] != $damien_cfg['period']) )
+	if($cfg['active'] AND !$temp['active']) $clear = true;
+	if(!$cfg['active'] AND $temp['active']) $schedule = true;
+	if($cfg['active'] AND $temp['active'] AND (array($hours, $minutes, $seconds) != explode('-', date('G-i-s', $cfg['schedule'])) OR $temp['period'] != $cfg['period']) )
 	{
 		$clear = true;
 		$schedule = true;
 	}
 	if($clear) 		wp_clear_scheduled_hook('dbc_backup');
 	if($schedule) 	wp_schedule_event($temp['schedule'], 'dbc_backup', 'dbc_backup');
-	$damien_cfg = $temp;
+	$cfg = $temp;
 	?><div id="message" class="updated fade"><p><?php _e('Options saved.') ?></p></div><?php
 }
 
 $is_safe_mode = ini_get('safe_mode') == '1' ? 1 : 0;
-if(!empty($damien_cfg['export_dir']))
+if(!empty($cfg['export_dir']))
 {
-	if(!is_dir($damien_cfg['export_dir']) AND !$is_safe_mode)
+	if(!is_dir($cfg['export_dir']) AND !$is_safe_mode)
 	{
-		@mkdir($damien_cfg['export_dir'], 0777, true);
-		@chmod($damien_cfg['export_dir'], 0777);
+		@mkdir($cfg['export_dir'], 0777, true);
+		@chmod($cfg['export_dir'], 0777);
 
-		if(is_dir($damien_cfg['export_dir']))
+		if(is_dir($cfg['export_dir']))
 		{
-			$dbc_msg[] = sprintf(__("Folder <strong>%s</strong> was created.", 'dbcbackup'), $damien_cfg['export_dir']);
+			$dbc_msg[] = sprintf(__("Folder <strong>%s</strong> was created.", 'dbcbackup'), $cfg['export_dir']);
 		}
 		else
 		{
-			$dbc_msg[] = $is_safe_mode ? __('PHP Safe Mode Is On', 'dbcbackup') : sprintf(__("Folder <strong>%s</strong> wasn't created, check permissions.", 'dbcbackup'), $damien_cfg['export_dir']);
+			$dbc_msg[] = $is_safe_mode ? __('PHP Safe Mode Is On', 'dbcbackup') : sprintf(__("Folder <strong>%s</strong> wasn't created, check permissions.", 'dbcbackup'), $cfg['export_dir']);								
 		}
 	}
 	else
 	{
-		$dbc_msg[] = sprintf(__("Folder <strong>%s</strong> exists.", 'dbcbackup'), $damien_cfg['export_dir']);
+		$dbc_msg[] = sprintf(__("Folder <strong>%s</strong> exists.", 'dbcbackup'), $cfg['export_dir']);
 	}
 	
-	if(is_dir($damien_cfg['export_dir']))
+	if(is_dir($cfg['export_dir']))
 	{
 		$condoms = array('.htaccess', 'index.html');	
 		foreach($condoms as $condom)
 		{
-			if(!file_exists($damien_cfg['export_dir'].'/'.$condom))
+			if(!file_exists($cfg['export_dir'].'/'.$condom))
 			{
-				if($file = @fopen($damien_cfg['export_dir'].'/'.$condom, 'w'))
+				if($file = @fopen($cfg['export_dir'].'/'.$condom, 'w')) 
 				{	
 					$cofipr =  ($condom == 'index.html')? '' : "Order allow,deny\ndeny from all";
 					fwrite($file, $cofipr);
@@ -182,17 +180,16 @@ else
 	<table class="form-table">
 	   <tr valign="top">
 		   <th scope="row" nowrap="nowrap"><?php _e('Export Directory:', 'dbcbackup'); ?></th>
-		   <td><input size="40" type="text"  name="export_dir" value="<?php echo esc_attr($damien_cfg['export_dir']); ?>" /><br />
-			<?php echo $uploads['basedir'];
-			 _e('Full Path e.g. /home/path/to/public_html/databack', 'dbcbackup'); ?></td>
+		   <td><input size="40" type="text"  name="export_dir" value="<?php echo attribute_escape($cfg['export_dir']); ?>" /><br />
+			<?php _e('Full Path e.g. /home/path/to/public_html/databack', 'dbcbackup'); ?></td>
 		</tr>
 		<tr valign="top">
 		   <th scope="row" nowrap="nowrap"><?php _e('Compression:', 'dbcbackup'); ?></th>
 		   <td>
 			<?php
-			$none_selected 	= ($damien_cfg['compression'] == 'none') 	? 	'selected' : '';
-			$gz_selected 	= ($damien_cfg['compression'] == 'gz') 	? 	'selected' : '';
-			$bz2_selected 	= ($damien_cfg['compression'] == 'bz2') 	? 	'selected' : '';
+			$none_selected 	= ($cfg['compression'] == 'none') 	? 	'selected' : '';
+			$gz_selected 	= ($cfg['compression'] == 'gz') 	? 	'selected' : '';
+			$bz2_selected 	= ($cfg['compression'] == 'bz2') 	? 	'selected' : '';  
 			?>
 			<select name="compression" style="display:inline;">
 				<option value="none" <?php echo $none_selected; ?>><?php _e('None', 'dbcbackup'); ?></option>
@@ -203,7 +200,7 @@ else
 				<select name="gzip_lvl">
 				<?php 	
 				for($i = 1; $i <= 9; $i++) : 
-				$selected = ($damien_cfg['gzip_lvl'] == $i) ? 'selected' : '';
+				$selected = ($cfg['gzip_lvl'] == $i) ? 'selected' : '';
 				?>
 					<option value="<?php echo $i; ?>" <?php echo $selected; ?>><?php _e('Level', 'dbcbackup'); ?> <?php echo $i; ?></option>
 				<?php endfor; ?>
@@ -215,13 +212,13 @@ else
 		<tr valign="top">
 			<th scope="row" nowrap="nowrap"><?php _e('Backup Schedule:', 'dbcbackup'); ?><br /><?php _e('Server Dates/Times', 'dbcbackup'); ?></th>
 			<td><?php 
-				list($hours, $minutes, $seconds) = explode('-', date('G-i-s', $damien_cfg['schedule']));
+				list($hours, $minutes, $seconds) = explode('-', date('G-i-s', $cfg['schedule'])); 
 				$times = array('hours', 'minutes', 'seconds');
 				$periods = array(3600 => __('Hour(s)', 'dbcbackup'), 86400 => __('Day(s)', 'dbcbackup'), 604800 => __('Week(s)', 'dbcbackup'), 2592000 => __('Month(s)', 'dbcbackup'));
-				$tmonth	=	$damien_cfg['period'] / 2592000;
-				$tweek	=	$damien_cfg['period'] / 604800;
-				$tday	=	$damien_cfg['period'] / 86400;
-				$thour	=	$damien_cfg['period'] / 3600;
+				$tmonth	=	$cfg['period'] / 2592000;
+				$tweek	=	$cfg['period'] / 604800;
+				$tday	=	$cfg['period'] / 86400;
+				$thour	=	$cfg['period'] / 3600;
 				
 				if(is_int($tmonth) 		AND $tmonth > 0)	{	$speriod = 2592000;	$severy	= $tmonth;	}
 				elseif(is_int($tweek) 	AND $tweek > 0)		{	$speriod = 604800;	$severy	= $tweek;	}
@@ -254,7 +251,7 @@ else
 					<?php endfor; ?>
 					</select></label>&nbsp;
 					<?php endforeach;?></p>
-				<?php _e('Active:', 'dbcbackup'); ?> <input style="display:inline" type="checkbox" name="active" value="1" <?php echo ($damien_cfg['active'] ? 'checked="checked"' : ''); ?> /></p>
+				<?php _e('Active:', 'dbcbackup'); ?> <input style="display:inline" type="checkbox" name="active" value="1" <?php echo ($cfg['active'] ? 'checked="checked"' : ''); ?> /></p>		
 				<?php if($next_scheduled = wp_next_scheduled('dbc_backup')):
 						_e('Next Schedule is on: ', 'dbcbackup');  echo date('Y-m-d H:i:s', $next_scheduled); ?> | <?php
 					endif;
@@ -273,7 +270,7 @@ else
 				default:	$display = $i.' '.($i > 1 ? __('Days', 'dbcbackup') : __('Day', 'dbcbackup'));	break;
 			}
 		   ?>
-            <option value="<?php echo $i; ?>" <?php echo ($damien_cfg['rotate'] == $i ? 'selected' : ''); ?>><?php echo $display; ?></option>
+            <option value="<?php echo $i; ?>" <?php echo ($cfg['rotate'] == $i ? 'selected' : ''); ?>><?php echo $display; ?></option>
 			<?php endfor; ?>
            </select></label><br /><?php _e('The deletion of the old backups occurs during new backup generation.', 'dbcbackup'); ?></td>
 		</tr>
@@ -295,7 +292,7 @@ else
 		/* 
 		 * here we insert the log files if there are any 
 		 */
-					if(!empty($damien_cfg['logs'])): ?>
+					if(!empty($cfg['logs'])): ?>
 					<table class="widefat">
 					<thead>
 					  <tr>
@@ -311,7 +308,7 @@ else
 					<tbody>
 					<?php 
 					$i = 0;
-					foreach($damien_cfg['logs'] AS $log): ?>
+					foreach($cfg['logs'] AS $log): ?>
 					  <tr>
 						<td><?php echo ++$i; ?></td>
 						<td><?php echo date('Y-m-d H:i:s', $log['started']); ?></td>
