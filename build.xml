@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="damiens _empty" basedir=".">
+
+    <!-- Include config file containing  -->
+    <loadproperties srcFile="build.properties" />
+    <loadproperties srcFile="dev.properties" />
+    <loadproperties srcFile="single.properties" />
+    <loadproperties srcFile="win.properties" />
+
+    <!-- Sets variables which can later be used. -->
+    <!-- The value of a property is accessed via ${} -->
+    <property name="src.dir" location="src" />
+    <property name="build.dir" location="build" />
+    <property name="dist.dir" location="dist" />
+
+
+    <fail unless="plugin.name"/>
+
+
+
+    <!-- MAKE IT THE SAME BELOW -->
+    <!-- MAKE IT THE SAME BELOW -->
+
+    <!-- DEV Deletes the existing directory-->
+
+    <target name="mac.plugin.clean">
+        <delete dir="${mac.dir}" />
+    </target>
+
+
+
+    <!-- SINGLE Deletes the PLUGIN directory-->
+    <target name="single.clean">
+        <delete dir="${mac.plugin.dir}" />
+    </target>
+
+
+
+    <!-- WINDOWS Deletes the existing directory-->
+    <target name="win.plugin.clean">
+        <delete dir="${win.dir}" />
+    </target>
+
+
+    <!-- WINDOWS WAMP Deletes the PLUGIN & CREATES the directory-->
+    <target name="win.clean">
+        <delete dir="${win.plugin.dir}" />
+        <mkdir dir="${win.plugin.dir}" />
+    </target>
+
+
+
+
+
+    <target name="build.clean">
+        <delete dir="${build.dir}" />
+        <delete dir="${dist.dir}" />
+    </target>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Creates the  build & moves the files directory-->
+    <target name="makedir" depends="build.clean">
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${build.dir}/${plugin.name}" />
+        <mkdir dir="${dist.dir}" />
+    </target>
+
+    <target name="make" depends="makedir">
+        <copy todir="${build.dir}/${plugin.name}">
+            <fileset dir="."
+                     includes="**/*.php"
+                     excludes="**/templates/,**/testing/,**/tests/"
+                    />
+        </copy>
+
+
+        <copy todir="${build.dir}/${plugin.name}/css">
+            <fileset dir="css"
+                     excludes="**/*.esproj"
+                    />
+
+        </copy>
+        <copy todir="${build.dir}/${plugin.name}/inc">
+            <fileset dir="inc"/>
+        </copy>
+        <copy todir="${build.dir}/${plugin.name}/js">
+            <fileset dir="js"/>
+        </copy>
+
+    </target>
+
+    <target name="readme">
+        <echo message="Generating update file ..." level="info"/>
+        <copy todir="${build.dir}/${plugin.name}">
+            <fileset dir="."/>
+            <globmapper from="readme.md" to="readme.txt"/>
+            <filterset>
+                <filter token="BUILD" value="Foo Bar"/>
+            </filterset>
+
+        </copy>
+
+    </target>
+
+
+
+
+
+
+
+    <target name="mac_zip" depends="make">
+        <zip destfile="${dist.dir}/${plugin.name}.zip"
+             basedir="${plugin.name}"
+                />
+        <zip destfile="/Volumes/Proust/dropbox/_plugins/${plugin.name}.zip"
+             basedir="${plugin.name}"
+                />
+    </target>
+
+    <target name="win_zip" depends="win.clean,make">
+        <zip destfile="${dist.dir}/${plugin.name}.zip"
+             basedir="${plugin.name}"
+                />
+
+    </target>
+
+    <!-- YOU NEED WP-CLI for this-->
+    <target name="wp.status">
+        <echo message="Checking WP Status..." />
+
+        <exec executable="wp" dir=".">
+            <arg line="plugin status ${plugin.name}" />
+        </exec>
+    </target>
+
+
+</project>
