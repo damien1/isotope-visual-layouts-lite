@@ -1,6 +1,6 @@
 #intellij idea files to ignore
 .iws
-workspace.xml
+.idea/workspace.xml
 tasks.xml
 
 #svn files to ignore
