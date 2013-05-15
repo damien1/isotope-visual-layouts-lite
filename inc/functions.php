@@ -39,8 +39,9 @@ function dbcbackup_structure($table, $fp)
 
 function dbcbackup_data($table, $fp)
 {
-	// TODO define the variables
 	// variables
+	$j = '';
+	$field_flags[] = $j;
 
 	$is_safe_mode = ini_get('safe_mode') == '1' ? 1 : 0;
 	if (!$is_safe_mode) set_time_limit(600);
