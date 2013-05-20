@@ -180,8 +180,8 @@ else
 	<table class="form-table">
 	   <tr valign="top">
 		   <th scope="row" nowrap="nowrap"><?php _e('Export Directory:', 'dbcbackup'); ?></th>
-		   <td><input size="40" type="text"  name="export_dir" value="<?php echo attribute_escape($cfg['export_dir']); ?>" /><br />
-			<?php _e('Full Path e.g. /home/path/to/public_html/databack', 'dbcbackup'); ?></td>
+		   <td><input size="40" type="text"  name="export_dir" value="<?php echo esc_attr($cfg['export_dir']); ?>" /><br />
+			<?php _e('Use ../wp-content/backup or a full path like e.g. /home/username/public_html/databack', 'dbcbackup'); ?></td>
 		</tr>
 		<tr valign="top">
 		   <th scope="row" nowrap="nowrap"><?php _e('Compression:', 'dbcbackup'); ?></th>
