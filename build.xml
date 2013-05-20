@@ -104,7 +104,7 @@
             <fileset dir="."/>
             <globmapper from="plugin_readme.md" to="readme.txt"/>
             <filterset>
-                <filter token="BUILD" value="Foo Bar"/>
+                <filter token="BUILD" value="${plugin.version}"/>
             </filterset>
 
         </copy>

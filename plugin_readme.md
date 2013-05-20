@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: damiensaunders
 Donate link: 
-Tags: Database, Cron, Backup, Schedule, SQL
+Tags: Database, Cron, Backup, Schedule, SQL, data, extract
 Requires at least: 3.0
-Tested up to: 3.5
+Tested up to: 3.6
 Stable tag: @BUILD@
 
 DBC Backup 2 is a safe & simple way to schedule regular WordPress database backups using the wp-cron batch jobs.
@@ -24,21 +24,27 @@ You select when and where your backup will be generated. The backup file is save
 = Additional Info =
 The plugin will try to auto create the export directory
 
-During backup, a log will be generated which includes, the generation date, file, filesize, status and the duration of the generation.
+During backup, a log is created that includes, the generation date, file, filesize, status and the duration of the generation.
 
 The backup files are identical to what phpmyadmin would produce because DBC Backup is using the key procedures of phpmyadmin. 
 
 DBC Backup was built to be fast, flexible and as simple as possible.
 
-I've used this plugin for several years and was disappointed that the author Chris T aka Tefra no longer maintained it so I have forked it. I tried to contact the author but without any luck.
 
 = Checkout my other work =
-* [Damien](http://damien.co/blog?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin) - digital marketing strategy, technical development and digital marketing
-* [Ideas for WordPress](http://wordpress.damien.co/?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin)
-* [Plugins for WordPress](http://wordpress.damien.co/plugins?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin)
+
+== CHANGE YOUR WEBSITE NOT YOUR THEME == responsive visual grid layout with Isotope.js & visual animation. [Free to download](http://wordpress.damien.co/shop/isotope/?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin&utm_keyword=readme) 
+
+
+* [Damien](http://damien.co/blog?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin&utm_keyword=readme) - digital marketing strategy, technical development and digital marketing
+* [Ideas for WordPress](http://wordpress.damien.co/?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin&utm_keyword=readme)
+* [Plugins for WordPress](http://wordpress.damien.co/plugins?utm_source=WordPress&utm_medium=dbc-backup&utm_campaign=WordPress-Plugin&utm_keyword=readme)
 
 
 == Changelog ==
+
+= Version 2.2 =
+- Killed a few bugs. Getting this ready for the next WordPress 3.6 
 
 = Version 2.1.1 =
 - Making things a little bit harder. Added an index.php file so you can't browse this plugin folder.
