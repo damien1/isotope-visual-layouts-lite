@@ -102,7 +102,7 @@
         <echo message="Generating update file ..." level="info"/>
         <copy todir="${build.dir}/${plugin.name}">
             <fileset dir="."/>
-            <globmapper from="readme.md" to="readme.txt"/>
+            <globmapper from="plugin_readme.md" to="readme.txt"/>
             <filterset>
                 <filter token="BUILD" value="Foo Bar"/>
             </filterset>
