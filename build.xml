@@ -21,7 +21,7 @@
     <!-- MAKE IT THE SAME BELOW -->
     <!-- MAKE IT THE SAME BELOW -->
 
-    <!-- DEV Deletes the existing directory-->
+    <!-- DANGER DEV Deletes the existing directory-->
 
     <target name="mac.plugin.clean">
         <delete dir="${mac.dir}" />
@@ -29,7 +29,7 @@
 
 
 
-    <!-- SINGLE Deletes the PLUGIN directory-->
+    <!-- DANGER  SINGLE Deletes the PLUGIN directory-->
     <target name="single.clean">
         <delete dir="${mac.plugin.dir}" />
     </target>
@@ -53,6 +53,7 @@
 
 
     <target name="build.clean">
+			<echo message="delete the build and dist directories ..." level="info"/>
         <delete dir="${build.dir}" />
         <delete dir="${dist.dir}" />
     </target>
@@ -69,6 +70,7 @@
 
     <!-- Creates the  build & moves the files directory-->
     <target name="makedir" depends="build.clean">
+			<echo message="making build and dist directories ..." level="info"/>
         <mkdir dir="${build.dir}" />
         <mkdir dir="${build.dir}/${plugin.name}" />
         <mkdir dir="${dist.dir}" />
@@ -99,7 +101,7 @@
     </target>
 
     <target name="readme">
-        <echo message="Generating update file ..." level="info"/>
+        <echo message="Generating readme file ..." level="info"/>
         <copy todir="${build.dir}/${plugin.name}">
             <fileset dir="."/>
             <globmapper from="plugin_readme.md" to="readme.txt"/>
@@ -118,15 +120,18 @@
 
 
     <target name="mac_zip" depends="make">
+			<echo message="making the zip ..." level="info"/>
         <zip destfile="${dist.dir}/${plugin.name}.zip"
              basedir="${plugin.name}"
                 />
+			<echo message="storing a copy in DropBox ..." level="info"/>
         <zip destfile="/Volumes/Proust/dropbox/_plugins/${plugin.name}.zip"
              basedir="${plugin.name}"
                 />
     </target>
 
     <target name="win_zip" depends="win.clean,make">
+			<echo message="win zip is funny ..." level="info"/>
         <zip destfile="${dist.dir}/${plugin.name}.zip"
              basedir="${plugin.name}"
                 />
