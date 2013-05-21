@@ -21,7 +21,7 @@
     <!-- MAKE IT THE SAME BELOW -->
     <!-- MAKE IT THE SAME BELOW -->
 
-    <!-- DEV Deletes the existing directory-->
+    <!-- DANGER DEV Deletes the existing directory-->
 
     <target name="mac.plugin.clean">
         <delete dir="${mac.dir}" />
@@ -29,7 +29,7 @@
 
 
 
-    <!-- SINGLE Deletes the PLUGIN directory-->
+    <!-- DANGER  SINGLE Deletes the PLUGIN directory-->
     <target name="single.clean">
         <delete dir="${mac.plugin.dir}" />
     </target>
