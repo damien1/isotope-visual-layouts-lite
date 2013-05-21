@@ -84,19 +84,10 @@
                     />
         </copy>
 
-
-        <copy todir="${build.dir}/${plugin.name}/css">
-            <fileset dir="css"
-                     excludes="**/*.esproj"
-                    />
-
-        </copy>
         <copy todir="${build.dir}/${plugin.name}/inc">
             <fileset dir="inc"/>
         </copy>
-        <copy todir="${build.dir}/${plugin.name}/js">
-            <fileset dir="js"/>
-        </copy>
+
 
     </target>
 
@@ -119,14 +110,14 @@
 
 
 
-    <target name="mac_zip" depends="make">
+    <target name="mac_zip" depends="makedir, make, readme">
 			<echo message="making the zip ..." level="info"/>
         <zip destfile="${dist.dir}/${plugin.name}.zip"
-             basedir="${plugin.name}"
+             basedir="/${build.dir}"
                 />
 			<echo message="storing a copy in DropBox ..." level="info"/>
         <zip destfile="/Volumes/Proust/dropbox/_plugins/${plugin.name}.zip"
-             basedir="${plugin.name}"
+             basedir="/${build.dir}"
                 />
     </target>
 
