@@ -49,6 +49,36 @@
     </target>
 
 
+	<!-- *************************************************************** -->
+	<!--             ******** PHP Lint stuff  **********                 -->
+	<!-- *************************************************************** -->
+
+
+
+	<target name="lint" description="Perform syntax check of sourcecode files">
+		<apply executable="php" failonerror="true">
+			<arg value="-l" />
+
+			<fileset dir="${basedir}">
+				<include name="**/*.php" />
+				<modified />
+			</fileset>
+
+			<fileset dir="${basedir}/tests">
+				<include name="**/*.php" />
+				<modified />
+			</fileset>
+		</apply>
+	</target>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -143,15 +173,30 @@
 	<!-- *************************************************************** -->
 	<!--             ******** SVN STUFF **********                       -->
 	<!-- *************************************************************** -->
-	<property file="build.properties"></property>
+
 	<property name="svn.base.url" value="${svn.repository.url}/${svn.project.base.path}"/>
+
+	<target name="check-abc">
+		<available file="build.properties" property="abc.present"/>
+	</target>
+
+	<target name="do-if-abc" depends="check-abc" if="abc.present">
+		<property file="build.properties"></property>
+	</target>
+
+
+
+
+
+
+
 
 	<!-- ****************************************************************** -->
 	<!-- svnCommit:                                                          -->
 	<!--                                                                     -->
 	<!-- ******************************************************************* -->
 
-		<target name="svnCommit">
+		<target name="svnCommit" depends="do-if-abc">
 
 		<java classname="org.tmatesoft.svn.cli.SVN"
 					dir="${build.dir}" fork="true">
@@ -173,7 +218,7 @@
 	<!-- svntag: performs tagging using properties from                              -->
 	<!--         build.properties and uses SVNANT tasks                              -->
 	<!-- ******************************************************************* -->
-	<target name="svntag" description="tags individual project using svnant task">
+	<target name="svntag" description="tags individual project using svnant task" depends="do-if-abc">
 		<property name="svn.tag.message" value="Tagging Project ${ant.project.name} with tag name ${tag.name} from trunk "/>
 		<property name="src.url"  value="${svn.base.url}/trunk/"/>
 		<property name="dest.url" value="${svn.base.url}/tags/${tag.name}"/>
