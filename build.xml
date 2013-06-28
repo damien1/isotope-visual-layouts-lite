@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="dbc-backup-2" basedir=".">
+<project name="***" basedir=".">
 
     <!-- Include config file containing  -->
     <loadproperties srcFile="build.properties" />
@@ -128,6 +128,8 @@
             <globmapper from="plugin_readme.md" to="readme.txt"/>
             <filterset>
                 <filter token="BUILD" value="${plugin.version}"/>
+								<filter token="STABLE" value="${plugin.stable}"/>
+								<filter token="SHORTDESC" value="${plugin.short}"/>
             </filterset>
 
         </copy>
@@ -181,7 +183,7 @@
 	</target>
 
 	<target name="do-if-abc" depends="check-abc" if="abc.present">
-		<property file="build.properties"></property>
+		<property file="deploy.properties"></property>
 	</target>
 
 
