@@ -83,7 +83,7 @@
 
 
 
-    <target name="build.clean" description="delete the build & dist directories">
+    <target name="build.clean" description="delete the build dist directories">
 			<echo message="delete the build and dist directories ..." level="info"/>
         <delete dir="${build.dir}" />
         <delete dir="${dist.dir}" />

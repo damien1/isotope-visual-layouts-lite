@@ -28,11 +28,13 @@ This is not a theme and you don't need to know anything about HTML or CSS or cod
 
 
 ####Key Features
-* Includes Infinite Scroll for pagination
-* Support by e-mail 
-* Personal or Developer licence to change the CSS and HTML 
-* Infinite Scroll & Pagination (coming in v3)
+* Access to hints and tips detailed documentation
+* Support by e-mail
+* Personal or Developer licence to change the CSS and HTML
+* Integrated Twitter Bootstrap
+* Integration with Infinite Scroll (if needed - disabled by default)
 * Lot's of hooks to play around with
+
 
 
 
@@ -101,6 +103,8 @@ Hmm it sounds like your theme has fixed widths. You need a responsive theme for 
 2. The finished page showing 10 recent posts. Resize your browser window to see them animate.
 
 ### Changelog 
+
+
 
 = 2.2 =
 
