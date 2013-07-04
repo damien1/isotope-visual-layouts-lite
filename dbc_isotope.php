@@ -171,7 +171,7 @@ function dbc_isotope_shortcode_handler($atts) {
 	if
 	($isotope_posts->have_posts())
 	$isotope_vpl_return ='<!-- Isotope for WordPress by Damien http://wordpress.damien.co/isotope  -->'.$damien_filtrify_placeholder;
-	$isotope_vpl_return .= '<ul class="isocontent">';
+	$isotope_vpl_return .= '<ul class="isocontent metrouicss grid">';
 	while
 	($isotope_posts->have_posts()) : $isotope_posts->the_post();
 	//@TODO clean-up variable names to make them safe
@@ -208,7 +208,7 @@ function dbc_isotope_shortcode_handler($atts) {
 		break;
 
 	case 'Image with Text'; // the default option
-		$feat_title = '<div class="ftext">'.get_the_title().'</div>';
+		$feat_title = '<div class="padding5 fg-color-white">'.get_the_title().'</div>';
 		$feat_image = get_the_post_thumbnail($id, $thumbv);
 		$feat_excerpt;
 		break;
@@ -224,14 +224,14 @@ function dbc_isotope_shortcode_handler($atts) {
 
 
 	//@TODO clean-up variable names to make them safe
-	$isotope_vpl_return .='<li class="'. implode(' ', get_post_class($cus_colour, $post->ID)).'"';
+	$isotope_vpl_return .='<li class="tile-content '. implode(' ', get_post_class($cus_colour, $post->ID)).'"';
 	$isotope_vpl_return .= $feat_filtrify;
 	$isotope_vpl_return .= $data_attrib;
 	$isotope_vpl_return .='>';
 	$isotope_vpl_return .='<a href="'.get_permalink().'">';
 	$isotope_vpl_return .= $feat_title;
 	$isotope_vpl_return .= '</a>';
-	$isotope_vpl_return .= '<div class="image">'.$feat_image.'</div>';
+	$isotope_vpl_return .= '<div class="tile.image">'.$feat_image.'</div>';
 
 	//$isotope_vpl_return .= $feat_title . '</div>';
 	$isotope_vpl_return .= $feat_excerpt;
