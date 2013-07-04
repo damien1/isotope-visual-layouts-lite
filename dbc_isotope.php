@@ -276,7 +276,7 @@ add_action('admin_init', 'isotope_vpl_set_default_options');
 
 function isotope_vpl_set_default_options() {
 	if (get_option('isotope_options') === false){
-		$new_options['dropdown1'] = "Yellow";
+		$new_options['dropdown1'] = "grey";
 		$new_options['dropdown2'] = "Image with Text";
 		$new_options['version'] = ISOTOPE_LITE_VERSION;
 		add_option('isotope_options', $new_options);
