@@ -155,7 +155,7 @@ function dbc_isotope_shortcode_handler($atts) {
  //		global $damien_filtrify, $damien_filtrify_placeholder;
 		
 		/**
-		 * adding Transient API and caching WP_query for 3 minutes	
+		 * adding Transient API and caching WP_query for 1 minute
 		 */	
 		$isotope_vpl_current_site ='';
 		$isotope_vpl_current_site = get_current_blog_id();
@@ -163,7 +163,7 @@ function dbc_isotope_shortcode_handler($atts) {
 		if ( false === ( $isotope_posts = get_transient( $isotope_vpl_current_site ) ) ) {
 			// It wasn't there, so regenerate the data and save the transient
 			$isotope_posts = get_posts($args);;
-			set_transient( $isotope_vpl_current_site, $isotope_posts, 60*3 );
+			set_transient( $isotope_vpl_current_site, $isotope_posts, 60 );
      }
 
 	$isotope_posts = new wp_query($args);
