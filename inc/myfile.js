@@ -10,9 +10,9 @@
       var mycontainer = $j('ul.isocontent');
       mycontainer.imagesLoaded( function(){
      	 mycontainer.isotope({
-	     	itemSelector: 'li.box',
+	     	itemSelector: 'li.tile',
 	     	masonry : {
-          columnWidth : 150
+          //columnWidth : 90
         }
 	     	});
     });
