@@ -70,7 +70,9 @@ add_action( 'wp_enqueue_scripts', 'dbc_isotope_add_my_stylesheet' );
  * Enqueue plugin style-file
  */
 function dbc_isotope_add_my_stylesheet() {
-    wp_register_style( 'dbc_isotope-style', plugins_url('css/custom_isotope.css', __FILE__) );
+  // metro ui css
+	wp_register_style( 'dbc_isotope-style', plugins_url('css/modern.css', __FILE__) );
+  //  wp_register_style( 'dbc_isotope-style', plugins_url('css/custom_isotope.css', __FILE__) );
     wp_enqueue_style( 'dbc_isotope-style' );
 }
 
