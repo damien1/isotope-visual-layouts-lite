@@ -1,10 +1,10 @@
-# Isotope Visual Post Layouts
+Isotope Visual Post Layouts
 Contributors: damiensaunders
 Donate link:
 Tags: List Posts, Category List, List Custom Post, Isotope, Masonry, CSS, visual effect, animation, jquery, filter, HTML5, grid, responsive
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 2.2
+Stable tag: @STABLE@
 
 **Add stunning visual effects to your list of posts & custom post types using Isotope. Needs a responsive theme.**
 
@@ -24,10 +24,8 @@ This is not a theme and you don't need to know anything about HTML or CSS or cod
 ### Looking for a demo? [check it out](http://wordpress.damien.co/isotope/?utm_source=WordPress&utm_medium=isotope-lite-installed&utm_campaign=WordPress-Plugin-30OFF")
 
 
+@PROMO@
 
-
-##GET 30% off Isotope Pro plugin
-<a target="_blank" href="http://whitetshirtdigital.com/shop/isotope-for-wordpress-plugin-pro-licence/?utm_source=WordPress&utm_medium=isotope-lite-installed&utm_campaign=WordPress-Plugin-30OFF">Get 30% off a PRO Plugin</a> - enter ISOTOPE at the checkout.
 
 ####Key Features
 * Includes Infinite Scroll for pagination
