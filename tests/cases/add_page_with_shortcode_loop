@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/" />
+<title>add_page_with_shortcode</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">add_page_with_shortcode</td></tr>
+</thead><tbody>
+<tr>
+	<td>store</td>
+	<td>3</td>
+	<td>x</td>
+</tr>
+<tr>
+	<td>gotolabel</td>
+	<td>target1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>runScript</td>
+	<td>alert(&quot;This should not appear&quot;)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>target1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>16</td>
+	<td>y</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>${y} &gt; ${x}</td>
+	<td>target2</td>
+</tr>
+<tr>
+	<td>runScript</td>
+	<td>alert(&quot;This also should not appear&quot;);</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>target2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>&quot;Compare : &quot;+${x}+&quot; vs &quot;+${y}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>while</td>
+	<td>${x} &lt;= ${y}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>javascript{Math.floor(Math.random()*8)}</td>
+	<td>a</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>javascript{['The Cure','The The','The End', 'The Smiths'][Math.floor(Math.random()*4)]}</td>
+	<td>tag</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>${a} ${tag}</td>
+	<td>page</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>http://single.local/wp-admin/post-new.php?post_type=page</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=title-prompt-text</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=title</td>
+	<td>${page}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=content</td>
+	<td>[dbc_freetile posts=50]</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=publish</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=View page</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>${page}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>[dbc_freetile posts=50]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>id=freetile</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>eval(${x} + 1)</td>
+	<td>x</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>Compare :&nbsp;&nbsp;${x}&nbsp;&nbsp;vs&nbsp;&nbsp;${y}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>endWhile</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>Finished with x = ${x} and y = ${y}</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
