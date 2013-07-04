@@ -120,7 +120,7 @@ function dbc_isotope_shortcode_handler($atts) {
       'cats' => '',
       'order' => 'DESC',
       'post_type' => '',
-      'filtrify' => 'on',
+      'filtrify' => 'off',
       ), 
      $atts));
 	 $ds_cats2 = $cats;
@@ -138,7 +138,7 @@ function dbc_isotope_shortcode_handler($atts) {
 	  */
 	  global $damien_filtrify_placeholder;
 	 $isotope_vpl_option = isotope_vpl_get_global_options();
-	 $isotope_vpl_style = $isotope_vpl_option["dropdown1"];
+	 $isotope_vpl_style = strtolower($isotope_vpl_option["dropdown1"]);
 	 $isotope_vpl_images = $isotope_vpl_option["dropdown2"];
 	 $isotope_vpl_return ='<!-- Isotope for WordPress by Damien http://wordpress.damien.co/isotope  -->'.$damien_filtrify_placeholder;
 	 ?>
@@ -171,7 +171,7 @@ function dbc_isotope_shortcode_handler($atts) {
 	if
 	($isotope_posts->have_posts())
 	$isotope_vpl_return ='<!-- Isotope for WordPress by Damien http://wordpress.damien.co/isotope  -->'.$damien_filtrify_placeholder;
-	$isotope_vpl_return .= '<ul class="isocontent metrouicss grid">';
+	$isotope_vpl_return .= '<ul class="isocontent metrouicss page">';
 	while
 	($isotope_posts->have_posts()) : $isotope_posts->the_post();
 	//@TODO clean-up variable names to make them safe
@@ -179,10 +179,12 @@ function dbc_isotope_shortcode_handler($atts) {
 	if
 	($meta != '')
 	{
-		$thumbv = $meta;
+		$thumbv = 'tile.double-vertical';
 	}
-	else($thumbv ='thumbnail');
-	$cus_colour = $thumbv.' box '.$isotope_vpl_style.' ';
+	else($thumbv ='tile.double');
+	//	$cus_colour = $thumbv.' tile border-color-blue';
+
+	$cus_colour = $thumbv.' tile bg-color-'.$isotope_vpl_style.'Dark border-color-'.$isotope_vpl_style.' ';
 	$cat_class = implode(', ', wp_get_post_categories( get_the_ID(), array('fields' => 'names') ) );
 	$tag_classes = implode(', ', wp_get_post_tags( get_the_ID(), array('fields' => 'names') ) );
 	
@@ -310,7 +312,7 @@ echo '<div class="inside"><p>This plugin is free for you to use. Because I paid 
  */
 function isotope_vpl_setting_dropdown_fn() {
 	$options = get_option('isotope_options');
-	$items = array("Red", "Green", "Blue", "Orange", "White", "Violet", "Yellow");
+	$items = array("Red", "Green", "Blue", "orange", "white", "violet", "yellow", "grey");
 	echo "<select id='vpl_drop_down1' name='isotope_options[dropdown1]'>";
 	foreach($items as $item) {
 		$selected = ($options['dropdown1']==$item) ? 'selected="selected"' : '';
