@@ -3,7 +3,7 @@ Contributors: damiensaunders
 Donate link:
 Tags: List Posts, Category List, List Custom Post, Isotope, Masonry, CSS, visual effect, animation, jquery, filter, HTML5, grid, responsive
 Requires at least: 3.3
-Tested up to: 3.5.1
+Tested up to: 3.8
 Stable tag: @STABLE@
 
 **Add stunning visual effects to your list of posts & custom post types using Isotope. Needs a responsive theme.**
@@ -21,7 +21,7 @@ Just create a page or post and add the shortcode [dbc_isotope]
 **No coding and no theme to modify**
 This is not a theme and you don't need to know anything about HTML or CSS or coding. Just activate the plugin and create a new page (or post) this will save you hours of research on the Internet.
 
-### Looking for a demo? [check it out](http://wordpress.damien.co/isotope/?utm_source=WordPress&utm_medium=isotope-lite-installed&utm_campaign=WordPress-Plugin-30OFF")
+### Looking for a demo? [check it out](http://demo.damien.co/?utm_source=WordPress&utm_medium=isotope-lite-installed&utm_campaign=lite-plugin-readme")
 
 
 @PROMO@
@@ -104,7 +104,9 @@ Hmm it sounds like your theme has fixed widths. You need a responsive theme for 
 
 ### Changelog 
 
-
+= 3.0 =
+New Year New Look - thanks to metro.css
+To improve memory and performace, add caching (of 1 minute) to the shortcode query.
 
 = 2.2 =
 
