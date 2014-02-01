@@ -74,7 +74,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		<?php isotope_vpl_plugin_options_page(); ?>
 		
 		<ul>
-		<li> Want to <a target="_blank" href="http://whitetshirtdigital.com/shop/isotope-for-wordpress-plugin-pro-licence/?utm_source=WordPress&utm_medium=dbc-isotope-lite-installed&utm_campaign=Isotope-Layouts">change my CSS or HTML then please help by buying a licence from me</a></li>
+		<li> Want to <a target="_blank" href="http://whitetshirtdigital.com/shop/isotope-visual-layouts-wordpress-plugin-pro/?utm_source=WordPress&utm_medium=dbc-isotope-lite-installed&utm_campaign=Isotope-Lite">change my CSS or HTML then please help by buying a licence from me</a></li>
 		</ul>
 		</div> <!-- .inside -->
 		</div>

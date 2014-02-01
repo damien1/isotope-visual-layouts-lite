@@ -1,5 +1,8 @@
 /**
  * Damien's theme jQuery.
+ * © 2012 - 2014
+ *
+ *
  */
  
    
