@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by IntelliJ IDEA.
- * User: damien
+ * User: damien saunders
  * Date: 01/01/2014
- * Time: 09:26
+ * Updated: 01/02/2014
  */
 
 
@@ -76,10 +76,8 @@ function dbc_isotope_shortcode_handler($atts) {
         'posts_per_page' => $posts
     ));
     global $id, $post, $blogid;
-    //		global $damien_filtrify, $damien_filtrify_placeholder;
 
-
-    /**
+   /**
      * adding Transient API and caching WP_query for 1 minute
      */
     $isotope_vpl_current_site ='';
@@ -109,7 +107,7 @@ function dbc_isotope_shortcode_handler($atts) {
         else($thumbv ='tile.double');
         //	$cus_colour = $thumbv.' tile border-color-blue';
 
-        $cus_colour = $thumbv.' tile bg-color-'.$isotope_vpl_style.'Dark border-color-'.$isotope_vpl_style.' ';
+        $cus_colour = $thumbv.' tile bg-'.$isotope_vpl_style.' bd-'.$isotope_vpl_style.' ';
         $cat_class = implode(', ', wp_get_post_categories( get_the_ID(), array('fields' => 'names') ) );
         $tag_classes = implode(', ', wp_get_post_tags( get_the_ID(), array('fields' => 'names') ) );
 
@@ -155,12 +153,10 @@ function dbc_isotope_shortcode_handler($atts) {
         $isotope_vpl_return .= $feat_filtrify;
         $isotope_vpl_return .= $data_attrib;
         $isotope_vpl_return .='>';
-        $isotope_vpl_return .='<a href="'.get_permalink().'">';
         $isotope_vpl_return .= $feat_title;
+        $isotope_vpl_return .='<a href="'.get_permalink().'">';
         $isotope_vpl_return .= '</a>';
         $isotope_vpl_return .= '<div class="tile.image">'.$feat_image.'</div>';
-
-        //$isotope_vpl_return .= $feat_title . '</div>';
         $isotope_vpl_return .= $feat_excerpt;
         $isotope_vpl_return .= '</li>';
 

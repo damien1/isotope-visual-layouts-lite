@@ -160,7 +160,7 @@ echo '<div class="inside"><p>This plugin is free for you to use. Because I paid 
  */
 function isotope_vpl_setting_dropdown_fn() {
 	$options = get_option('isotope_options');
-	$items = array("Red", "Green", "Blue", "orange", "white", "violet", "yellow", "grey");
+	$items = array("Red", "Green", "Blue", "Orange", "White", "Violet", "Yellow", "Grey");
 	echo "<select id='vpl_drop_down1' name='isotope_options[dropdown1]'>";
 	foreach($items as $item) {
 		$selected = ($options['dropdown1']==$item) ? 'selected="selected"' : '';
