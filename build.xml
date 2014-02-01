@@ -212,8 +212,8 @@
 			"download_url" : "http://whitetshirtdigital.co.uk/plugins/${plugin.name}/${plugin.name}.zip",
 			"version" : "${plugin.build}",
 			"requires" : "3.3",
-			"tested" : "3.5.1",
-			"last_updated" : "2013-02-24 16:00:00",
+			"tested" : "3.8.1",
+			"last_updated" : "${ant.date}",
 			"upgrade_notice" : "${plugin.changelog.version}",
 			"author" : "Damien Saunders",
 			"author_homepage" : "http://damien.co/",
@@ -222,10 +222,22 @@
 			"installation_notes" : "Click install to download and automatically update to the new version..",
 			"changelog" : "This section list's what's changed. \n 1.7 - New Shortcode functions \n -Added pagination"
 			},
-			"downloaded" : 1000
+			"downloaded" : 99900
 			}
 		</echo>
 	</target>
+
+
+
+
+    <target name="ubuntu_zip" depends="makedir, make, readme" description="makes the Ubuntu ZIP">
+        <echo message="making the zip ..." level="info"/>
+        <zip destfile="${dist.dir}/${plugin.name}-${build.version}.${build.number}.zip"
+             basedir="/${build.dir}"
+                />
+    </target>
+
+
 
 
 
@@ -279,9 +291,9 @@
 
 	<target name="jenkins-build">
 		<!-- Clean -->
-		<antcall target="win.clean"></antcall>
+		<antcall target="build.clean"></antcall>
 		<antcall target="make"></antcall>
-		<antcall target="win_zip"></antcall>
+		<antcall target="ubuntu_zip"></antcall>
 		<antcall target="ftp.damien"></antcall>
 		<antcall target="dev.json"></antcall>
 	</target>
