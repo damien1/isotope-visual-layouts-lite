@@ -22,6 +22,7 @@ define ("ISOTOPE_LITE_VERSION", "3.0a");
 $plugin = plugin_basename(__FILE__); 
 //$damien_filtrify = true;
 
+
 /**
  * Included files
  * since v3.0
