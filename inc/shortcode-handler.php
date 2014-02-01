@@ -96,7 +96,7 @@ function dbc_isotope_shortcode_handler($atts) {
     if
     ($isotope_posts->have_posts())
         $isotope_vpl_return ='<!-- Isotope for WordPress by Damien http://wordpress.damien.co/isotope  -->'.$damien_filtrify_placeholder;
-    $isotope_vpl_return .= '<ul class="isocontent metrouicss page">';
+    $isotope_vpl_return .= '<ul class="isocontent metro page">';
     while
     ($isotope_posts->have_posts()) : $isotope_posts->the_post();
         //@TODO clean-up variable names to make them safe
