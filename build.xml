@@ -232,7 +232,7 @@
 
     <target name="ubuntu_zip" depends="makedir, make, readme" description="makes the Ubuntu ZIP">
         <echo message="making the zip ..." level="info"/>
-        <zip destfile="${dist.dir}/${plugin.name}-${build.version}.${build.number}.zip"
+        <zip destfile="${dist.dir}/${plugin.name}-${plugin.version}.${build.number}.zip"
              basedir="/${build.dir}"
                 />
     </target>
@@ -249,7 +249,7 @@
 				 basedir="/${build.dir}"
 				/>
 		<echo message="storing a copy in DropBox ..." level="info"/>
-		<zip destfile="/Volumes/Proust/dropbox/_plugins/${plugin.name}-${build.version}.${build.number}.zip"
+		<zip destfile="~/dropbox/_plugins/${plugin.name}-${plugin.version}.${build.number}.zip"
 				 basedir="/${build.dir}"
 				/>
 	</target>
