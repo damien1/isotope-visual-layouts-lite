@@ -99,13 +99,22 @@ function dbc_isotope_shortcode_handler($atts) {
     ($isotope_posts->have_posts()) : $isotope_posts->the_post();
         //@TODO clean-up variable names to make them safe
         $meta = get_post_meta( $id, '_size', true );
-        if
-        ($meta != '')
+        if ( $meta != '' )
         {
             $thumbv = 'tile.double-vertical';
         }
-        else($thumbv ='tile.double');
+        else{$thumbv ='tile.double';
         //	$cus_colour = $thumbv.' tile border-color-blue';
+        }
+
+        //fg_colour for the fonts
+        //$light = array("yellow","green");
+        $vpl_dark = array("violet","red","blue");
+        if ( in_array($isotope_vpl_style, $vpl_dark)){
+            $vpl_fg_colour="white";
+        }
+        else {$vpl_fg_colour="black";}
+
 
         $cus_colour = $thumbv.' tile bg-'.$isotope_vpl_style.' bd-'.$isotope_vpl_style.' ';
         $cat_class = implode(', ', wp_get_post_categories( get_the_ID(), array('fields' => 'names') ) );
@@ -133,7 +142,7 @@ function dbc_isotope_shortcode_handler($atts) {
                 break;
 
             case 'Image with Text'; // the default option
-                $feat_title = '<div class="padding5 fg-color-white">'.get_the_title().'</div>';
+                $feat_title = '<div class="padding5 fg-'.$vpl_fg_colour.'">'.get_the_title().'</div>';
                 $feat_image = get_the_post_thumbnail($id, $thumbv);
                 $feat_excerpt;
                 break;
@@ -149,7 +158,7 @@ function dbc_isotope_shortcode_handler($atts) {
 
 
         //@TODO clean-up variable names to make them safe
-        $isotope_vpl_return .='<li class="tile-content '. implode(' ', get_post_class($cus_colour, $post->ID)).'"';
+        $isotope_vpl_return .='<li class="metro tile-content '. implode(' ', get_post_class($cus_colour, $post->ID)).'"';
         $isotope_vpl_return .= $feat_filtrify;
         $isotope_vpl_return .= $data_attrib;
         $isotope_vpl_return .='>';
