@@ -3,7 +3,7 @@ Contributors: damiensaunders
 Donate link:
 Tags: List Posts, Category List, List Custom Post, Isotope, Masonry, CSS, visual effect, animation, jquery, filter, HTML5, grid, responsive
 Requires at least: 3.3
-Tested up to: 3.8
+Tested up to: 3.8.1
 Stable tag: @STABLE@
 
 **Add stunning visual effects to your list of posts & custom post types using Isotope. Needs a responsive theme.**
@@ -32,8 +32,9 @@ This is not a theme and you don't need to know anything about HTML or CSS or cod
 * Support by e-mail
 * Personal or Developer licence to change the CSS and HTML
 * Integrated Twitter Bootstrap
-* Integration with Infinite Scroll (if needed - disabled by default)
+* Integrated with Infinite Scroll
 * Lot's of hooks to play around with
+* Improved JS file concat / min
 
 
 
@@ -82,7 +83,7 @@ This is not a theme and you don't need to know anything about HTML or CSS or cod
 
 New Isotope licence terms, mean you don't need a licence to use this plugin *as-is*
 
-**Can I change your CSS / HTML or the Isotope Javascript?** 
+**Can I change the CSS / HTML or the Isotope Javascript?**
 
 You can change the CSS or the JS with a commercial licence from Metafizzy and buying a Pro Plugin from me. 
 
@@ -92,6 +93,7 @@ Please remember that I paid for a licence so you can use this for free.
 **When I resize my browser window smaller nothing happens**
 
 Hmm it sounds like your theme has fixed widths. You need a responsive theme for the resize animation effect to work.
+View the source on your freshly added page and check that each 'box' on the page has a css element tag isotope-item
 
 
 
@@ -106,7 +108,10 @@ Hmm it sounds like your theme has fixed widths. You need a responsive theme for 
 
 = 3.0 =
 New Year New Look - thanks to metro.css
-To improve memory and performace, add caching (of 1 minute) to the shortcode query.
+NEW - To improve memory and performace, add caching (of 1 minute) to the shortcode query.
+NEW - Metro UI CSS
+Updated - Isotope.js
+
 
 = 2.2 =
 

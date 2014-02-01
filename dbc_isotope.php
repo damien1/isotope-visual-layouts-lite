@@ -57,30 +57,29 @@ $IsotopeUpdateChecker = new PluginUpdateChecker(
 
 
 /**
- * Enqueue isotope.js
+ * Enqueue Plugin Jquery Scripts
  */
 function vpl_scripts_method() {
-	wp_enqueue_script('isotope', plugins_url('/js/jquery.isotope.min.js', __FILE__), array('jquery'), true, true);
-	wp_enqueue_script('isotope_myfile', plugins_url('/js/jquery.damien.js', __FILE__), array('isotope'), true, true);
-	
+	wp_enqueue_script('isotope', plugins_url('/js/jquery.isotope.min.js', __FILE__), array('jquery'), ISOTOPE_LITE_VERSION, true);
+	wp_enqueue_script('isotope_myfile', plugins_url('/js/jquery.damien.js', __FILE__), array('isotope'), ISOTOPE_LITE_VERSION, true);
+    wp_enqueue_script('metro_ui', plugins_url('/js/jquery.metro.min.js', __FILE__), array('isotope'), ISOTOPE_LITE_VERSION, true);
 }    
  
 add_action('wp_enqueue_scripts', 'vpl_scripts_method');
 
 /**
- * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
- */
-add_action( 'wp_enqueue_scripts', 'dbc_isotope_add_my_stylesheet' );
-
-/**
  * Enqueue plugin style-file
  */
 function dbc_isotope_add_my_stylesheet() {
-  // metro ui css
-	wp_register_style( 'dbc_isotope-style', plugins_url('css/modern.css', __FILE__) );
-  //  wp_register_style( 'dbc_isotope-style', plugins_url('css/custom_isotope.css', __FILE__) );
+    // metro ui css
+    wp_register_style( 'dbc_isotope-style', plugins_url('css/metro-bootstrap.css', __FILE__) );
+    //  wp_register_style( 'dbc_isotope-style', plugins_url('css/custom_isotope.css', __FILE__) );
     wp_enqueue_style( 'dbc_isotope-style' );
 }
+
+add_action( 'wp_enqueue_scripts', 'dbc_isotope_add_my_stylesheet' );
+
+
 
 /**
  * Add Hook for Admin page under Appearance
