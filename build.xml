@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="***" basedir=".">
+<project name="isotope-visual-layouts-lite" basedir=".">
 
 	<!-- Include config file containing  -->
 	<loadproperties srcFile="build.properties" />
@@ -37,17 +37,31 @@
 
 
 
-	<!-- WINDOWS Deletes the existing directory-->
-	<target name="win.plugin.clean">
-		<delete dir="${win.dir}" />
-	</target>
 
 
-	<!-- WINDOWS WAMP Deletes the PLUGIN & CREATES the directory-->
-	<target name="win.clean">
-		<delete dir="${win.plugin.dir}" />
-		<mkdir dir="${win.plugin.dir}" />
-	</target>
+
+
+
+
+
+    <!-- *************************************************************** -->
+    <!--             ********     JS Concat   **********                 -->
+    <!-- *************************************************************** -->
+
+    <target name="concat-all">
+        <concat destfile="js/jquery.visuallayouts.js" encoding="UTF-8" outputencoding="UTF-8" fixlastline="true">
+            <filelist id="filelist" dir="${basedir}/js">
+                <file name="jquery.damien.js"/>
+                <file name="jquery.isotope.min.js" />
+                <file name="jquery.metro.min.js" />
+            </filelist>
+
+        </concat>
+
+
+    </target>
+
+
 
 
 	<!-- *************************************************************** -->
@@ -208,7 +222,7 @@
 			"installation_notes" : "Click install to download and automatically update to the new version..",
 			"changelog" : "This section list's what's changed. \n 1.7 - New Shortcode functions \n -Added pagination"
 			},
-			"downloaded" : 100
+			"downloaded" : 1000
 			}
 		</echo>
 	</target>
@@ -228,13 +242,7 @@
 				/>
 	</target>
 
-	<target name="win_zip" depends="win.clean,make" description="makes the Win Zip ">
-		<echo message="win zip is funny ..." level="info"/>
-		<zip destfile="${dist.dir}/${plugin.name}.zip"
-				 basedir="${plugin.name}"
-				/>
 
-	</target>
 
 
 
