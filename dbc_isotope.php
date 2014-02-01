@@ -3,7 +3,7 @@
 Plugin Name: Isotope Visual Layouts lite
 Plugin URI: http://wordpress.damien.co/isotope?utm_source=WordPress&utm_medium=isotope-lite&utm_campaign=Isotope-Layouts
 Description: Add visual effects to your list of posts & custom post types using Isotope. Needs a responsive theme   
-Version: 3.0a
+Version: 3.0
 Author: Damien Saunders
 Author URI: http://damien.co/?utm_source=WordPress&utm_medium=isotope-lite&utm_campaign=Isotope-Layouts
 License: This plugin GPLv3 - All changes to the HTML / CSS or Javascript do require a licence.
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Globals
  */
-define ("ISOTOPE_LITE_VERSION", "3.0a");
+define ("ISOTOPE_LITE_VERSION", "3.0");
 
 $plugin = plugin_basename(__FILE__); 
 //$damien_filtrify = true;
