@@ -171,6 +171,16 @@
 							 excludes="**/examples/,**/testing/,**/test/"/>
 		</copy>
 
+        <copy todir="${build.dir}/${plugin.name}/css" failonerror="false">
+            <fileset dir="css/"
+                     includes="**/*.css"
+                     excludes="**/examples/,**/testing/,**/test/"/>
+        </copy>
+
+
+
+
+
 
 	</target>
 
@@ -249,7 +259,7 @@
 				 basedir="/${build.dir}"
 				/>
 		<echo message="storing a copy in DropBox ..." level="info"/>
-		<zip destfile="~/dropbox/_plugins/${plugin.name}-${plugin.version}.${build.number}.zip"
+		<zip destfile="/Volumes/marcel/Users/damien/Dropbox/_plugins/${plugin.name}-${plugin.version}-dev-${build.number}.zip"
 				 basedir="/${build.dir}"
 				/>
 	</target>
