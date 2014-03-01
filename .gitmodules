@@ -1,6 +1,3 @@
 [submodule "lib/isotope"]
 	path = lib/isotope
 	url = https://damien1@github.com/desandro/isotope.git
-[submodule "lib/metro-ui"]
-	path = lib/metro-ui
-	url = https://damien1@github.com/olton/Metro-UI-CSS.git
