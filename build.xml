@@ -168,7 +168,7 @@
 		<copy todir="${build.dir}/${plugin.name}/js" failonerror="false">
 			<fileset dir="js/"
 							 includes="**/*.js"
-							 excludes="**/examples/,**/testing/,**/test/"/>
+							 excludes="**/dev/,**/testing/,**/test/"/>
 		</copy>
 
         <copy todir="${build.dir}/${plugin.name}/css" failonerror="false">
